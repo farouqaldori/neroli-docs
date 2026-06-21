@@ -1,0 +1,82 @@
+---
+title: "Cloud"
+description: "Keep supported sessions running away from your Mac, then bring them back for review."
+---
+
+Neroli is local-first. Cloud exists for the cases where local execution is the
+wrong shape: a task is long-running, your Mac is busy, or you want the session
+to keep moving while you step away.
+
+Cloud is not where trust happens. Trust still happens when the result comes
+back and you review it.
+
+<Frame caption="Cloud lets a supported session leave your Mac, continue in a managed runtime, and return with a diff you can review locally.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: Local session to Cloud runtime to Local review, with status badges for moving to cloud, cloud, moving to local, and needs attention.
+  </div>
+</Frame>
+
+## When cloud helps
+
+Use cloud when:
+
+- a supported agent task should continue after you close the laptop
+- the work is mostly code and tests, not interactive local UI inspection
+- the environment can be described with setup commands and variables
+- you are comfortable reviewing the returned changes before merging
+
+Stay local when:
+
+- the task needs your local simulator, device, browser login, or private files
+- you expect to guide the agent every few minutes
+- the repo depends on secrets that should never leave your machine
+
+## Make cloud sessions usable
+
+Cloud needs the same thing every clean machine needs: setup, environment, and
+network rules.
+
+<Steps>
+  <Step title="Describe setup">
+    Add the commands that make the cloud runtime ready: install dependencies, build generated assets, or prepare toolchains.
+  </Step>
+
+  <Step title="Add environment variables">
+    Store the variables the cloud runtime needs. Mark secrets as secrets instead of committing them.
+  </Step>
+
+  <Step title="Choose network access">
+    Keep access restricted by default. Open only the domains the task needs.
+  </Step>
+
+  <Step title="Test before relying on it">
+    A broken setup script turns cloud into a waiting room. Test the environment before moving important work.
+  </Step>
+</Steps>
+
+## The handoff loop
+
+| Stage | What Neroli is doing | What you should watch |
+| --- | --- | --- |
+| Local | The session lives on your Mac. | Is the task scoped enough to send away? |
+| Moving to cloud | Neroli packages session state and starts the runtime. | Auth, setup, and environment errors. |
+| Cloud | The supported agent continues remotely. | Status, logs, and whether it needs input. |
+| Moving to local | Neroli syncs the result back. | Recovery messages or pending local sync. |
+| Local review | The diff is back in your review flow. | Plan, summary, verification, and changed files. |
+
+If something fails, Neroli tracks the recovery path: retry moving to cloud,
+reconnect the cloud session, retry moving back to local, complete a pending
+local sync, or ask for manual intervention.
+
+## Automations still matter in cloud
+
+Cloud does not replace repo setup. The same discipline that makes local sessions
+easy also makes cloud sessions reliable:
+
+- setup should be deterministic
+- verification should be one command
+- secrets should be explicit
+- network access should be intentional
+- cleanup should be predictable
+
+Next: use [Review](/review) to decide what comes back from cloud and what ships.

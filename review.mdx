@@ -1,0 +1,65 @@
+---
+title: "Review"
+description: "Turn finished agent work into a shipping decision."
+---
+
+Neroli treats agent output as a proposal. The point is not that the agent
+finished. The point is that you can understand, verify, and decide what ships.
+
+<Frame caption="Review combines the plan, commit story, diff, verification, panes, conflicts, and final merge decision.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: a review screen showing plan, commit story, changed files, verification result, browser evidence, and Merge or Archive.
+  </div>
+</Frame>
+
+## Review one session
+
+<Steps>
+  <Step title="Read the plan and story">
+    The plan tells you what the agent intended. The commit story should explain the user-facing change in plain language.
+  </Step>
+
+  <Step title="Inspect the diff">
+    Look for unrelated files, generated noise, secret files, dependency changes, and scripts you did not ask for.
+  </Step>
+
+  <Step title="Check the evidence">
+    Use Verify, Build, browser panes, simulator panes, terminal logs, or cloud status. Evidence must come from the session you are reviewing.
+  </Step>
+
+  <Step title="Decide">
+    Merge, open a pull request, continue the session, manually edit, or archive it.
+  </Step>
+</Steps>
+
+## Review many sessions
+
+Parallel work is useful only when the review boundaries are real.
+
+Good parallel sessions:
+
+- one fixes a UI bug while another updates docs
+- one explores a refactor while another implements a small feature
+- two sessions try competing approaches and you choose one
+
+Bad parallel sessions:
+
+- two sessions edit the same files and both must land
+- broad prompts create overlapping cleanup work
+- shared local state makes verification ambiguous
+
+Review each branch on its own first. Then merge one, merge several in sequence,
+or combine work manually.
+
+## Red flags
+
+- the diff is larger than the task
+- tests were deleted instead of fixed
+- verification ran from another session
+- cloud returned changes that were not re-verified locally
+- conflict warnings show another session touched the same file or flow
+- line attribution, where available, does not match the task intent
+
+<Warning>
+  Speed is not the win. Reviewable speed is the win.
+</Warning>

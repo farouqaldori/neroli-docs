@@ -1,0 +1,89 @@
+---
+title: "Automations"
+description: "Make every Neroli session ready to set up, run, build, verify, and clean up."
+---
+
+Automations are how Neroli stops each new worktree from feeling like a cold
+checkout. They turn your team's repeated commands into visible actions attached
+to the right session.
+
+This is the difference between "an agent edited files somewhere" and "this
+session is runnable, testable, and ready to review."
+
+<Frame caption="Automations make each session feel prepared: setup runs once, Run starts the app, Build compiles, Verify checks the result, and cleanup removes generated state.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: a session top bar with Set up, Run, Build, Verify, and Clean up buttons, plus a small history of previous runs.
+  </div>
+</Frame>
+
+## What automations fix
+
+Every parallel session has its own files. That is good for isolation, but it
+means every session also needs the same boring work:
+
+- install dependencies
+- copy local config that should not be committed
+- choose ports that do not collide with another session
+- start the app or local stack
+- run the build or verification command
+- clean up generated files when the session is removed
+
+Automations make that repeatable. The human gets buttons. Agents get a known
+workflow. Review gets evidence from the correct branch.
+
+## The automations worth creating first
+
+| Automation | When it runs | Why it matters |
+| --- | --- | --- |
+| Set up session | after a session is created | A fresh worktree becomes usable without manual setup. |
+| Run | manual, pinned | The app starts from the session you are reviewing. |
+| Build | manual, pinned | You can compile before spending time in review. |
+| Verify | manual or when moved to In Review | Review has a real check, not just an agent message. |
+| Clean up | before a session is removed | Generated state and background processes do not pile up. |
+
+Neroli's own repository uses this pattern: setup prepares per-worktree local
+state, Run launches the app, Build calls the project build script, Verify runs
+architecture checks, and cleanup removes generated session artifacts.
+
+## How this changes your day
+
+<Steps>
+  <Step title="Start a session">
+    Neroli creates the worktree. Setup can run immediately and prepare local files, ports, dependencies, and generated config.
+  </Step>
+
+  <Step title="Click Run">
+    The app starts from that session, so the browser or simulator shows the branch you are actually reviewing.
+  </Step>
+
+  <Step title="Let the agent work">
+    The agent can use the same Run, Build, and Verify actions instead of guessing commands.
+  </Step>
+
+  <Step title="Move to review">
+    Verification can run on demand or automatically when the session moves to In Review.
+  </Step>
+
+  <Step title="Archive confidently">
+    Cleanup removes session-specific output so parallel work does not leave clutter behind.
+  </Step>
+</Steps>
+
+## Keep automations boring
+
+Good automations are small wrappers around commands your repo already trusts.
+
+```sh
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$NEROLI_WORKTREE_PATH"
+npm run check
+```
+
+Use `NEROLI_WORKTREE_PATH` so the command always runs against the session that
+owns the work. Keep secrets out of the repo; copy or generate local files during
+setup instead.
+
+<Tip>
+  The point is not to automate everything. The point is to make the first five minutes of every session disappear.
+</Tip>

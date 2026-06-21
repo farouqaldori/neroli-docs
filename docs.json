@@ -11,53 +11,14 @@
   "navigation": {
     "groups": [
       {
-        "group": "Start here",
+        "group": "Neroli",
         "pages": [
           "index",
-          "start/install",
-          "start/first-session",
-          "guides/review-and-merge",
-          "concepts/parallel-sessions"
-        ]
-      },
-      {
-        "group": "Make Neroli yours",
-        "pages": [
-          "start/configure-repository",
-          "guides/browser-panes",
-          "guides/ios-simulator",
-          "concepts/cloud-handoff"
-        ]
-      },
-      {
-        "group": "How it works",
-        "pages": [
-          "concepts/workflow",
-          "concepts/isolated-worktrees",
-          "concepts/testing",
-          "concepts/git-worktrees"
-        ]
-      },
-      {
-        "group": "Reference for agents",
-        "pages": [
-          "reference/automations",
-          "reference/cli",
-          "reference/agents-and-panes"
-        ]
-      },
-      {
-        "group": "Security",
-        "pages": [
-          "security/security-and-permissions",
-          "security/privacy"
-        ]
-      },
-      {
-        "group": "Troubleshooting",
-        "pages": [
-          "troubleshooting/faq",
-          "troubleshooting/issues"
+          "start",
+          "automations",
+          "cloud",
+          "review",
+          "reference"
         ]
       }
     ]

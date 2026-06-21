@@ -1,0 +1,57 @@
+---
+title: "Agent details"
+description: "The small amount of technical detail agents and advanced users need."
+---
+
+Most users should live in the Mac app. This page is for agents, repo owners, and
+advanced debugging.
+
+## What Neroli gives each session
+
+| Thing | Why it exists |
+| --- | --- |
+| Worktree | Keeps files and branch state separate from other sessions. |
+| Panes | Keeps terminal, browser, simulator, logs, and review evidence with the task. |
+| Actions | Runs setup, run, build, verify, and cleanup from the right session. |
+| Status | Shows whether work is planning, running, in review, merging, done, local, cloud, or needs attention. |
+
+## Agent CLI bridge
+
+The `neroli` CLI is mainly for agents and automations. It lets them inspect the
+current session instead of guessing.
+
+```sh
+neroli identify --json
+neroli state list --json
+neroli browser look
+neroli ios-simulator status
+```
+
+Common groups:
+
+| Command | Use |
+| --- | --- |
+| `neroli identify` | Find the current workspace, session, and pane context. |
+| `neroli state` | Start, stop, restart, or inspect known workspace activity. |
+| `neroli browser` | Inspect or drive the browser pane attached to the session. |
+| `neroli ios-simulator` | Use the simulator owned by this workspace. |
+| `neroli automations` | Inspect or manage saved automations. |
+| `neroli automation-run` | Report outcomes from an automation run. |
+
+## Safety rules
+
+- A worktree is isolation for review, not a security sandbox.
+- Commands can access what your macOS user can access.
+- Do not commit `.env`, certificates, API keys, generated credentials, or local-only config.
+- Use cloud only for work whose setup, secrets, and network access are intentional.
+- If a command behaves strangely, first check that it ran from the right session path.
+
+## Quick troubleshooting
+
+| Problem | First check |
+| --- | --- |
+| Provider missing | Sign in to the provider from your normal terminal, then start a new session. |
+| App opens the wrong state | Start the app from the session Run action, not a random terminal. |
+| Verify fails only in Neroli | Run the same command from `NEROLI_WORKTREE_PATH` and check missing local setup. |
+| Cloud fails | Read the visible recovery message, then fix setup, auth, network, or pending sync. |
+| Browser looks stale | Restart the session's Run action and reload the attached browser pane. |

@@ -1,0 +1,83 @@
+---
+title: "Start"
+description: "Run one useful Neroli session from prompt to review."
+---
+
+Start with one task you can judge. Neroli is most valuable when each session has
+a clear outcome and a clear review boundary.
+
+<Frame caption="A good first session moves from a focused prompt to visible progress, verification, and review.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: a session lane with Prompt, Plan, Run, Verify, Diff, and Merge or Archive.
+  </div>
+</Frame>
+
+## Install and connect
+
+You need:
+
+- macOS 15.6 or later
+- a local Git repository
+- at least one coding agent, such as Claude Code or Codex
+- GitHub authentication if you open pull requests from your workflow
+
+Open Neroli, choose a repository, and start one session. Do not start with a
+large vague prompt. Start with something you can review in minutes.
+
+## Pick a reviewable task
+
+Good first tasks:
+
+- fix one visible UI issue
+- add one focused test
+- update one documentation page
+- reproduce one reported bug
+- try one implementation approach
+
+Avoid prompts like "clean up the app" or "improve the frontend." Those create
+projects, not reviewable sessions.
+
+## The first loop
+
+<Steps>
+  <Step title="Create a session">
+    Give the task a short name, choose the base branch, and pick the agent.
+  </Step>
+
+  <Step title="Give the agent a narrow job">
+    Say what should change, where to look first, and what should stay untouched.
+  </Step>
+
+  <Step title="Watch the plan">
+    Redirect early if the plan is too broad, risky, or pointed at the wrong files.
+  </Step>
+
+  <Step title="Use the right panes">
+    Keep terminals, browser previews, simulator state, and logs attached to the session that owns the changes.
+  </Step>
+
+  <Step title="Review before merging">
+    Inspect the diff and verification evidence. Merge, continue, or archive the session.
+  </Step>
+</Steps>
+
+## A good first prompt
+
+```txt
+Fix the empty-state layout in the sidebar.
+
+Use the existing design tokens. Do not change backend code.
+After the fix, run the check that covers this area and summarize what changed.
+```
+
+Add screenshots, routes, failing commands, or files when they make the task less
+ambiguous.
+
+## When to run more than one session
+
+Run agents in parallel only when the work can be reviewed independently. Good
+parallel work looks like "one session fixes a UI bug while another updates docs."
+Bad parallel work is two sessions editing the same files when both changes must
+land together.
+
+Next: make every new session easier with [Automations](/automations).

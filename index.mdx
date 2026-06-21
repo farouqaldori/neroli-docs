@@ -1,88 +1,81 @@
 ---
 title: "Introduction"
-description: "Run more AI coding work without losing confidence in what ships."
+description: "Run many AI coding agents in parallel. Trust what ships."
 ---
 
-Run many AI coding agents in parallel. Trust what ships.
+Neroli is a Mac app for managing AI coding work that would otherwise sprawl
+across terminals, branches, browser tabs, and half-finished diffs.
 
-AI coding agents make it easy to start more work than you can comfortably
-review. Neroli is the Mac app that keeps that work understandable.
+It gives every task a lane: a branch, a worktree, panes, actions, status, cloud
+state when needed, and a review decision at the end.
 
-Use Neroli when you want to run Claude Code, Codex, or another coding agent
-without losing track of the branch, the visible app state, the verification, or
-the final merge decision. It gives every task a clear lane from prompt to
-review.
-
-<Frame caption="Neroli turns scattered agent work into a journey: start a task, watch progress, verify behavior, then decide what ships.">
+<Frame caption="The core Neroli loop is task, session, evidence, review, and ship.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
-    Placeholder image: a Neroli workspace with sessions moving through Planning, In Progress, In Review, Merge, and Done.
+    Placeholder image: a Neroli workspace with several sessions moving from Planning to In Review, with Run, Build, Verify, Browser, Cloud, and Merge controls visible.
   </div>
 </Frame>
 
-## Why Neroli exists
+## The problem
 
-Agent work is only valuable when you can trust the result. Without a coordinator,
-parallel sessions quickly become hard to reason about:
+Agents are fast at making changes. The hard part is keeping the changes
+reviewable.
 
-- One checkout fills with unrelated edits.
-- Terminals, servers, browser tabs, and simulator state drift away from the task.
-- A finished agent still leaves you asking what actually changed.
-- Running several agents creates more review burden than confidence.
+Without Neroli:
 
-Neroli makes agent work reviewable. Each session has a branch, visible status,
-attached panes, and a diff you can inspect before anything reaches your main
-branch.
+- one checkout gets polluted by unrelated tasks
+- the server you are looking at may not match the branch you are reviewing
+- new sessions need the same setup steps over and over
+- long tasks die when your laptop is closed or busy
+- a finished agent still leaves you asking what actually changed
 
-## The user journey
+Neroli fixes that by making each agent session a small, inspectable workflow.
 
 <Steps>
-  <Step title="Start with one task">
-    Open a repository and start a focused session for one fix, feature, test, or investigation.
+  <Step title="Start a focused session">
+    Pick one bug, feature, test, or investigation. Neroli gives it its own branch and worktree.
   </Step>
 
-  <Step title="Let Neroli keep it separate">
-    Neroli gives the session its own branch, files, panes, and review context so it does not collide with other work.
+  <Step title="Make it runnable">
+    Repository actions can set up dependencies, start the app, build, verify, and clean up from the right session.
   </Step>
 
-  <Step title="Watch what matters">
-    Follow the plan, status, terminal output, browser state, simulator state, and changed files from one place.
+  <Step title="Move long work to cloud">
+    Supported sessions can keep running in Neroli Cloud, then return to your Mac for review.
   </Step>
 
-  <Step title="Review before you trust it">
-    Inspect the diff, run the right verification, compare competing sessions, then merge or archive.
+  <Step title="Review the proposal">
+    Compare the plan, commit story, diff, browser or simulator evidence, and verification result before merging.
   </Step>
 </Steps>
 
-## Start here
+## Read this way
 
 <CardGroup cols={2}>
-  <Card title="Install Neroli" icon="download" href="/start/install">
-    Get the Mac app ready and connect the agent providers you already use.
+  <Card title="Start" icon="sparkles" href="/start">
+    Install Neroli, open a repo, and run one clean session.
   </Card>
 
-  <Card title="Run your first session" icon="sparkles" href="/start/first-session">
-    Walk through the smallest useful loop: task, agent, progress, verification, review.
+  <Card title="Automations" icon="wand-sparkles" href="/automations">
+    Make every session ready to run, build, verify, and clean up.
   </Card>
 
-  <Card title="Review and merge" icon="git-pull-request" href="/guides/review-and-merge">
-    Learn the habit that makes agent work safe: treat every result as a proposal.
+  <Card title="Cloud" icon="cloud" href="/cloud">
+    Send supported long-running work to cloud and bring it back for review.
   </Card>
 
-  <Card title="Run agents in parallel" icon="split" href="/concepts/parallel-sessions">
-    Decide when to fan out work and when to keep one branch focused.
+  <Card title="Review" icon="git-pull-request" href="/review">
+    Decide what ships when one or many agents finish.
   </Card>
 </CardGroup>
 
-## What Neroli handles
+## What matters
 
-- A calm overview of open sessions, current status, and review state.
-- Visible plans, so you can redirect work before the agent spends time in the wrong direction.
-- Isolated branches and files so parallel sessions do not trample one checkout.
-- Panes that stay with the task: terminal, browser, simulator, logs, and diff.
-- Review context such as summaries, line attribution, and conflict surfacing.
-- Repo-owned actions for repeatable setup, run, build, verify, and cleanup.
-- Local-first operation, with cloud handoff only when you intentionally use it.
+- **Confidence:** every result is a proposal until you inspect and verify it.
+- **Flow:** new sessions can start with setup and run actions already waiting.
+- **Parallelism:** split independent work without mixing files or panes.
+- **Continuity:** use cloud when the task should keep running away from your Mac.
+- **Control:** your main branch only changes after review.
 
 <Info>
-  You do not need to learn the internals first. Start with one session, review it, then add parallel work when the review boundary is clear.
+  Neroli is local-first. Cloud is an explicit choice for supported sessions, not the default path for every task.
 </Info>
