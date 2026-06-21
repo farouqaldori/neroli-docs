@@ -1,0 +1,86 @@
+---
+title: "Session board"
+description: "Use the sidebar as a lightweight issue tracker for parallel agent work."
+---
+
+The left sidebar is how you keep many agent sessions from turning into a blur.
+Treat it like a small issue tracker for work that is happening inside Neroli.
+
+Each row is a session. Each group is a stage. Drag sessions between groups as
+the work changes.
+
+<Frame caption="The session board keeps parallel agent work organized by stage, with lane actions for automations.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: the Neroli sidebar with Planning, In Progress, In Review, Merge, and Done groups, plus automation buttons on group headers.
+  </div>
+</Frame>
+
+## The groups
+
+| Group | Use it for |
+| --- | --- |
+| Planning | Sessions that are still shaping the approach, plan, or prompt. |
+| In Progress | Sessions actively building, testing, exploring, or waiting on the agent. |
+| In Review | Larger changes that need a real review pass before merge. |
+| Merge | Work that looks ready, but still needs final validation or merge handling. |
+| Done | Work you have validated and want to keep visible for a while. |
+
+New or unplaced sessions appear in **In Progress** by default. Move them wherever
+your workflow needs them.
+
+## A practical loop
+
+<Steps>
+  <Step title="Plan">
+    Keep early sessions in Planning while the agent is exploring, drafting, or asking clarifying questions.
+  </Step>
+
+  <Step title="Build">
+    Move the session to In Progress once it is doing the work.
+  </Step>
+
+  <Step title="Review">
+    Move substantial changes to In Review. Ask the agent to self-review, run checks, and collect evidence.
+  </Step>
+
+  <Step title="Prepare to merge">
+    Move work to Merge when it looks ready but still needs your final validation.
+  </Step>
+
+  <Step title="Close it out">
+    Move validated work to Done, or archive/delete it when you no longer need the session around.
+  </Step>
+</Steps>
+
+This is deliberately lightweight. The board does not need to mirror your GitHub
+issues exactly. It is there to keep active agent work understandable.
+
+## Automations in the board
+
+The board is not just visual. Automations can attach to sidebar groups.
+
+- A group header can show automation buttons for that lane.
+- A lane automation receives the group name and the sessions in that group.
+- A **Session moved** automation can run when you drag a session into a new group.
+- Agents and automations can inspect a session's group and, when allowed, move a stopped or failed session to another group.
+
+Useful examples:
+
+| Automation | Where it fits |
+| --- | --- |
+| Review all in In Review | Ask agents to self-review each session in the group and summarize risk. |
+| Verify Merge lane | Run checks for sessions waiting to merge. |
+| Docs from Done | Draft docs updates from completed work. |
+| Cleanup Done | Archive sessions that were validated and no longer need to stay visible. |
+| Moved to In Review | Automatically start an agentic review when a session enters In Review. |
+
+## Keep the board honest
+
+Use the sidebar for decisions you have made, not guesses you hope are true.
+
+- Do not move work to Merge until you have a credible review summary and verification path.
+- Do not move work to Done until you validated the result.
+- If a session is noisy, stale, or no longer useful, archive it instead of keeping the board crowded.
+- If a lane keeps collecting the same manual work, create an automation for it.
+
+Next: make lane actions repeatable with [Automations](/automations).

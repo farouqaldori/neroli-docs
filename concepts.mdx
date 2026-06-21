@@ -37,6 +37,7 @@ commands, browser, or review belong to which job.
 | Automations | Run, Build, Verify, Stop, and setup happen from the right workspace. |
 | Artifacts | Generated images, PDFs, markdown, notebooks, and spreadsheets stay reviewable. |
 | Status | Waiting, failed, blocked, cloud, ready, and review states are visible. |
+| Board group | Planning, In Progress, In Review, Merge, and Done keep many sessions manageable. |
 
 ## Why direct TUIs matter
 
@@ -97,9 +98,14 @@ When you start a job, think in this order:
     Run the workspace's setup, run, build, verify, and stop actions from the session.
   </Step>
 
+  <Step title="Move the session">
+    Use the sidebar board to reflect where the work actually stands.
+  </Step>
+
   <Step title="Review before merging">
     Ask the agent to self-review, inspect the result, then decide what lands.
   </Step>
 </Steps>
 
-Next: turn the model into repeatable workflows with [Automations](/automations).
+Next: organize parallel work with the [Session board](/sessions), then turn the
+model into repeatable workflows with [Automations](/automations).

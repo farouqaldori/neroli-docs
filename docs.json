@@ -21,6 +21,7 @@
       {
         "group": "Workflows",
         "pages": [
+          "sessions",
           "automations",
           "cloud",
           "review",

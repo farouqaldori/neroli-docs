@@ -33,6 +33,11 @@ Both are workspace-native. They can show up in the top bar, command palette,
 sidebar, or session menu. They can also run on a schedule or when a session is
 created, moved, archived, or removed.
 
+Sidebar automations can live on workflow groups like Planning, In Review, Merge,
+or Done. When you run one from a group header, it receives that group and the
+sessions inside it. When you drag a session between groups, **Session moved**
+automations can run for the destination group.
+
 ## Automations worth creating
 
 | Automation | Why it is useful |
@@ -45,6 +50,8 @@ created, moved, archived, or removed.
 | Docs from shipped work | Agentic automation that drafts docs updates from new features and merged sessions. |
 | Review before merge | Agentic automation that checks diffs, migrations, env changes, tests, docs gaps, and risky files. |
 | Browser verification | Opens the app, drives the attached browser, and captures evidence for the review. |
+| Verify Merge lane | Runs checks or starts review agents for sessions waiting in Merge. |
+| Cleanup Done lane | Archives or summarizes completed sessions after validation. |
 
 ## The isolated dev environment pattern
 
@@ -93,8 +100,10 @@ sessions, then create automations that make the next session smoother.
 Good automations should be easy to launch from where the work happens:
 
 - pin Run, Build, and Verify in the session toolbar
+- place group-level actions on the sidebar lanes where you use them
 - keep Stop paired with anything that starts a server or service
 - use lifecycle setup when every new session needs the same preparation
+- use Session moved automations when entering In Review, Merge, or Done should trigger follow-up work
 - use scheduled or agentic automations for ongoing maintenance, docs, and improvements
 - keep personal machine-specific actions local, and share repo-wide actions with the team
 
@@ -102,4 +111,4 @@ Good automations should be easy to launch from where the work happens:
   Shared automations can live with the repo. Personal automations can stay local to your machine.
 </Tip>
 
-Next: use [Recipes and gotchas](/recipes) to turn automations into isolated dev sessions, cloud handoff, and review workflows.
+Next: use [Recipes and gotchas](/recipes) to turn automations into isolated dev sessions, cloud handoff, lane actions, and review workflows.
