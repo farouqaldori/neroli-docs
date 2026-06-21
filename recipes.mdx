@@ -56,17 +56,17 @@ Use this when you want several directions explored without mixing files.
   The point is not to make every task tiny. The point is to keep each stream of work inspectable.
 </Tip>
 
-## Lane automation
+## Group automation
 
 Use this when a sidebar group keeps collecting the same manual work.
 
 <Steps>
-  <Step title="Pick the lane">
+  <Step title="Pick the group">
     Choose the group where the work naturally gathers: In Review, Merge, Done, or another stage.
   </Step>
 
   <Step title="Create the action">
-    Add a sidebar automation for that group. It can inspect the sessions in the lane and act on the first or all of them.
+    Add a sidebar automation for that group. It can inspect the sessions in the group and act on the first or all of them.
   </Step>
 
   <Step title="Run from the header">
@@ -79,7 +79,7 @@ Use this when a sidebar group keeps collecting the same manual work.
 </Steps>
 
 ```txt
-Create a Neroli automation for the In Review lane.
+Create a Neroli automation for the In Review group.
 It should inspect every session in that group, ask each agent to self-review,
 summarize risks, and tell me which sessions need my attention.
 ```
@@ -179,7 +179,7 @@ other output files.
 | Generated files are noisy | Keep build outputs ignored unless they are real review artifacts. |
 | Two sessions edit the same area | Review them in sequence and merge deliberately. |
 | The board is crowded | Move validated work to Done, then archive sessions you no longer need. |
-| A lane repeats the same manual work | Add a sidebar automation for that group. |
+| A group repeats the same manual work | Add a sidebar automation for that group. |
 | Provider auth is missing | Sign in to the provider locally, then start a new session. |
 | Secrets appear in a diff | Stop and remove them before review. Automations should copy secrets, not commit them. |
 

@@ -50,8 +50,8 @@ automations can run for the destination group.
 | Docs from shipped work | Agentic automation that drafts docs updates from new features and merged sessions. |
 | Review before merge | Agentic automation that checks diffs, migrations, env changes, tests, docs gaps, and risky files. |
 | Browser verification | Opens the app, drives the attached browser, and captures evidence for the review. |
-| Verify Merge lane | Runs checks or starts review agents for sessions waiting in Merge. |
-| Cleanup Done lane | Archives or summarizes completed sessions after validation. |
+| Verify Merge | Runs checks or starts review agents for sessions waiting in Merge. |
+| Cleanup Done | Archives or summarizes completed sessions after validation. |
 
 ## The isolated dev environment pattern
 
@@ -100,7 +100,7 @@ sessions, then create automations that make the next session smoother.
 Good automations should be easy to launch from where the work happens:
 
 - pin Run, Build, and Verify in the session toolbar
-- place group-level actions on the sidebar lanes where you use them
+- place group actions on the sidebar groups where they are useful
 - keep Stop paired with anything that starts a server or service
 - use lifecycle setup when every new session needs the same preparation
 - use Session moved automations when entering In Review, Merge, or Done should trigger follow-up work
@@ -111,4 +111,4 @@ Good automations should be easy to launch from where the work happens:
   Shared automations can live with the repo. Personal automations can stay local to your machine.
 </Tip>
 
-Next: use [Recipes and gotchas](/recipes) to turn automations into isolated dev sessions, cloud handoff, lane actions, and review workflows.
+Next: use [Recipes and gotchas](/recipes) to turn automations into isolated dev sessions, cloud handoff, group actions, and review workflows.
