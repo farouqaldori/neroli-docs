@@ -1,0 +1,62 @@
+---
+title: "Your first session"
+description: "Open a repository, create an isolated worktree, start an agent, and review the result."
+---
+
+A session is one agent run inside one worktree. The worktree gives the agent a separate branch and directory so its changes do not collide with your main checkout.
+
+<Info>
+  Worktree isolation keeps development state separate. It does not change macOS permissions for local commands.
+</Info>
+
+## The first loop
+
+<Steps>
+  <Step title="Open a repository">
+    Choose a local Git repository in Neroli. The repository becomes the workspace that holds your sessions and worktrees.
+  </Step>
+
+  <Step title="Create a worktree">
+    Start a new session from the repository. Neroli creates or attaches an isolated Git worktree for the task.
+  </Step>
+
+  <Step title="Describe the task">
+    Tell the agent what you want. Add relevant files, screenshots, logs, or notes when the task needs context.
+  </Step>
+
+  <Step title="Run the project">
+    Use a pinned automation such as `Run`, or open a terminal pane in the worktree. Commands run from the session's directory.
+  </Step>
+
+  <Step title="Review changes">
+    Open the diff and terminal output. Run checks before you merge, cherry-pick, or discard work.
+  </Step>
+</Steps>
+
+<Frame caption="A first session usually moves left to right: repository, isolated worktree, agent prompt, visible output, review.">
+  <img src="/images/first-session-flow.svg" alt="Placeholder diagram showing the first Neroli session flow from repository to review." />
+</Frame>
+
+## Give the agent useful context
+
+Good session prompts are specific and bounded:
+
+- Name the files, feature, bug, or user flow.
+- Say what should not change.
+- Include failing commands or logs when available.
+- Ask for verification steps in the same worktree.
+
+```txt
+Fix the empty-state layout in the sidebar.
+
+Use the existing design tokens. Do not change backend code.
+After the fix, run the website or app check that covers this area.
+```
+
+## Know when to split work
+
+Use one session when the task is one coherent branch. Use multiple sessions when you want separate reviews or competing approaches.
+
+<Card title="Parallel sessions" icon="split" href="/concepts/parallel-sessions">
+  Learn how to decide between one worktree, multiple sessions, and multiple worktrees.
+</Card>

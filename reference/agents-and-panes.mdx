@@ -1,0 +1,30 @@
+---
+title: "Agents and panes"
+description: "How sessions, providers, terminals, browsers, simulators, and review surfaces fit together."
+---
+
+A Neroli session is an agent run attached to a worktree. A pane is a visible surface attached to the same work context.
+
+## Agent providers
+
+Neroli is built to coordinate provider sessions such as:
+
+- Claude Code.
+- Codex.
+- Shell-based commands and automation.
+
+Provider availability depends on what is installed and authenticated on your machine or configured for cloud runtime.
+
+## Common pane types
+
+| Pane | Use it for |
+| --- | --- |
+| Terminal | Run project commands, inspect logs, and interact with CLIs. |
+| Browser | Verify web UI behavior and collect DOM or network evidence. |
+| iOS simulator | Verify mobile UI and capture simulator state. |
+| Diff/review | Inspect changed files before accepting work. |
+| Logs/status | Understand what a session is doing or why it stopped. |
+
+## Practical rule
+
+Keep the pane with the work. If a browser, terminal, or simulator belongs to a session, inspect it from that session instead of recreating the state elsewhere.

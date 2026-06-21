@@ -1,0 +1,68 @@
+---
+title: "Isolated worktrees"
+description: "Understand repositories, workspaces, sessions, branches, worktrees, and panes."
+---
+
+Neroli uses Git worktrees to separate agent work. Each worktree is a real checkout with its own branch, files, terminal processes, and panes.
+
+## Core model
+
+| Term | What it means in Neroli |
+| --- | --- |
+| Repository | A Git codebase that Neroli can open. |
+| Workspace | The Neroli entry for a repository. It contains sessions, worktrees, automation, and panes. |
+| Worktree | A separate checkout for one stream of work. It usually maps to one branch. |
+| Session | An agent run inside a worktree. A session can be Claude, Codex, shell, or another supported runtime. |
+| Pane | A visible surface attached to a session, such as terminal, browser, simulator, diff, or logs. |
+| Automation | A repo-owned action that can run manually or on lifecycle events. |
+
+<Frame caption="A workspace can contain many worktrees. Each worktree can have agent sessions, panes, processes, and diffs tied to its branch.">
+  <img src="/images/worktree-model.svg" alt="Placeholder diagram showing a repository workspace containing multiple isolated worktrees and sessions." />
+</Frame>
+
+## What isolation gives you
+
+- Changes stay in the worktree's directory and branch.
+- Commands run from the worktree path.
+- Browser and simulator panes stay attached to the session that opened them.
+- Diffs and review state stay scoped to the current worktree.
+- You can archive or remove a worktree without touching unrelated sessions.
+
+<Warning>
+  A worktree is not a security sandbox. Agents and commands can still access files and network resources allowed to your macOS user.
+</Warning>
+
+## Branches and review
+
+The branch is the review unit. Treat each branch as something you may inspect, test, merge, or discard.
+
+Good branch boundaries:
+
+- One feature or fix.
+- One experiment.
+- One pull request.
+- One reviewable chunk of a larger project.
+
+Poor branch boundaries:
+
+- Unrelated changes for different product areas.
+- A test-only cleanup mixed with a risky feature.
+- Multiple competing approaches in the same branch.
+
+## Existing branches
+
+You can use Neroli with existing Git worktrees and branches. If a branch is already checked out in another worktree, Git will not let a second worktree check out the same branch at the same time.
+
+Use a new branch name when you want a second isolated attempt from the same starting point.
+
+## Where to go next
+
+<CardGroup cols={2}>
+  <Card title="Workflow" icon="route" href="/concepts/workflow">
+    See how a session moves from prompt to review.
+  </Card>
+
+  <Card title="Git worktrees" icon="git-branch" href="/concepts/git-worktrees">
+    Learn the Git model behind Neroli's isolation.
+  </Card>
+</CardGroup>

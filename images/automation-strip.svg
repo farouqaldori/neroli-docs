@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Automation strip placeholder</title>
+  <desc id="desc">A conceptual top-bar strip with setup, run, build, verify, and cleanup actions.</desc>
+  <rect width="1200" height="360" rx="28" fill="#0b0f14"/>
+  <rect x="80" y="120" width="1040" height="120" rx="22" fill="#141b22" stroke="#314150"/>
+  <g font-family="Arial" font-size="24" text-anchor="middle" fill="#ffffff">
+    <rect x="130" y="152" width="150" height="56" rx="12" fill="#22322f"/><text x="205" y="188">Setup</text>
+    <rect x="320" y="152" width="150" height="56" rx="12" fill="#2f7d68"/><text x="395" y="188">Run</text>
+    <rect x="510" y="152" width="150" height="56" rx="12" fill="#22322f"/><text x="585" y="188">Build</text>
+    <rect x="700" y="152" width="150" height="56" rx="12" fill="#22322f"/><text x="775" y="188">Verify</text>
+    <rect x="890" y="152" width="180" height="56" rx="12" fill="#22322f"/><text x="980" y="188">Cleanup</text>
+  </g>
+</svg>

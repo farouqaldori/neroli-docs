@@ -1,0 +1,37 @@
+---
+title: "Git worktrees"
+description: "Understand the Git mechanism behind Neroli work isolation."
+---
+
+Git worktrees let one repository have multiple checked-out working directories at the same time. Neroli uses them so each agent stream can have its own directory and branch.
+
+## Why worktrees matter
+
+Without worktrees, parallel agents would compete for one checkout. With worktrees:
+
+- Each session edits its own files.
+- Each branch has its own working directory.
+- Terminal commands run in the correct checkout.
+- You can compare branches without stashing or switching.
+
+## Common Git behavior
+
+| Behavior | What it means |
+| --- | --- |
+| One branch per worktree | Git normally prevents the same branch from being checked out in two worktrees. |
+| Shared object database | Worktrees share Git history storage, so they are lighter than full clones. |
+| Separate working files | Each worktree has its own files on disk. |
+| Normal branches | A worktree branch can be pushed, merged, or deleted like any other branch. |
+
+## Useful commands
+
+```sh
+git worktree list
+git status
+git branch --show-current
+git diff
+```
+
+<Tip>
+  When troubleshooting, first confirm which worktree path your terminal is in. Most confusing Git issues come from running a command in the wrong checkout.
+</Tip>

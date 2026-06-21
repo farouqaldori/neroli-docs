@@ -1,0 +1,34 @@
+---
+title: "CLI"
+description: "Common `neroli` command groups."
+---
+
+The `neroli` command connects your shell to the active Neroli workspace, session, browser pane, simulator, and automations.
+
+## Command groups
+
+| Command | Use it for |
+| --- | --- |
+| `neroli identify` | Print the current workspace, session, and surface context. |
+| `neroli state` | List and control known workspace activity. |
+| `neroli session` | Inspect session history, provider sessions, and transcripts. |
+| `neroli surface` | List or inspect visible Neroli panes. |
+| `neroli browser` | Drive the attached browser pane. |
+| `neroli ios-simulator` | Drive this workspace's simulator. |
+| `neroli ios-device` | Install or launch apps on paired devices. |
+| `neroli automations` | List and manage saved automations. |
+| `neroli automation-run` | Inspect the current automation run context. |
+
+## Examples
+
+```sh
+neroli identify --json
+neroli state list --json
+neroli session list --all --json
+neroli browser look
+neroli ios-simulator status
+```
+
+<Info>
+  Most commands operate on the current worktree context. If you are unsure where you are, start with `neroli identify --json`.
+</Info>

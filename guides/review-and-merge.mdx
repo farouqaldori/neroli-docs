@@ -1,0 +1,42 @@
+---
+title: "Review and merge"
+description: "Inspect a session's changes before accepting them."
+---
+
+Review is where Neroli earns its keep. Treat every session output as a proposal until you inspect the diff and verify the behavior.
+
+<Frame caption="Review brings the session summary, changed files, verification output, and merge decision into one place.">
+  <img src="/images/review-flow.svg" alt="Placeholder diagram showing summary, diff, verification, and merge decision during review." />
+</Frame>
+
+## Review checklist
+
+<Steps>
+  <Step title="Open the diff">
+    Inspect every changed file in the worktree. Look for unrelated edits, generated files, and accidental secrets.
+  </Step>
+
+  <Step title="Read the session summary">
+    Compare what the agent says it changed with the actual diff.
+  </Step>
+
+  <Step title="Run verification">
+    Use `Verify`, `Build`, `Run`, browser checks, simulator checks, or a terminal command from the same worktree.
+  </Step>
+
+  <Step title="Decide what to keep">
+    Continue the session, manually edit, commit, open a pull request, merge, or archive the worktree.
+  </Step>
+</Steps>
+
+## Red flags
+
+- Changes outside the requested area.
+- Local-only files such as `.env`, certificates, or build output.
+- Tests removed instead of fixed.
+- New commands or scripts that are destructive by default.
+- A passed check that was run from a different worktree.
+
+<Tip>
+  If two sessions solve the same problem, review both diffs before deciding. The better branch may not be the one that finished first.
+</Tip>

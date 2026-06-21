@@ -1,0 +1,39 @@
+---
+title: "Use browser panes"
+description: "Attach web verification to the right Neroli session."
+---
+
+Browser panes let you inspect web apps from the same session that owns the code changes. They are useful for visual checks, DOM inspection, and reproducing user flows.
+
+## Open a page
+
+Use the app UI or the CLI:
+
+```sh
+neroli browser open http://localhost:4321 --name website
+neroli browser look --browser website
+```
+
+## Inspect before interacting
+
+```sh
+neroli browser look
+neroli browser state --role button --name-regex Save
+neroli browser read body --max-chars 2000
+```
+
+## Click and verify
+
+```sh
+neroli browser tap "Save"
+neroli browser wait-for-text "Saved"
+neroli browser network --url-pattern /api/ --limit 20
+```
+
+<Frame caption="A browser pane connects a running app, visible page state, DOM inspection, and network evidence to one session.">
+  <img src="/images/browser-pane.svg" alt="Placeholder diagram showing a browser pane connected to a worktree run command and network log." />
+</Frame>
+
+<Warning>
+  Use the Neroli browser pane for this workspace. Do not attach a separate browser automation surface that cannot see the user's Neroli pane.
+</Warning>

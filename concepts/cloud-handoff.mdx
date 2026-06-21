@@ -1,0 +1,38 @@
+---
+title: "Cloud handoff"
+description: "Understand local-to-cloud and cloud-to-local session movement."
+---
+
+Neroli can move supported sessions between local and cloud runtime when cloud is configured. The goal is continuity: keep work moving while preserving enough state to review and resume.
+
+<Frame caption="Cloud handoff moves workspace state and agent context between a local worktree and a cloud runtime, then syncs reviewed changes back.">
+  <img src="/images/cloud-handoff.svg" alt="Placeholder diagram showing a local Neroli session moving to cloud and back to local review." />
+</Frame>
+
+## What moves
+
+- Workspace file changes.
+- Session and pane metadata where supported.
+- Agent state checkpoints for supported providers.
+- Lifecycle status so the app can show whether the session is local, cloud, synced, or needs attention.
+
+## What does not change
+
+- You still review the resulting diff before merging.
+- Git metadata and checkpoint internals should not appear as user changes.
+- Local secrets should not be committed or treated as portable project state.
+
+## When to use cloud
+
+Use cloud handoff when a supported session should continue running away from your Mac or when a longer task benefits from a managed runtime.
+
+Stay local when the task needs:
+
+- Local-only devices.
+- Local private files.
+- Fast UI iteration with browser or simulator panes.
+- Manual intervention every few minutes.
+
+<Warning>
+  Cloud support depends on account, provider, and runtime configuration. If a handoff fails, review the status message and retry only after the reported issue is fixed.
+</Warning>

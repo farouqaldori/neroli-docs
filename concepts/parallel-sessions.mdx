@@ -1,0 +1,40 @@
+---
+title: "Parallel sessions"
+description: "Choose when to use one session, several sessions, or several worktrees."
+---
+
+Parallel agent work is useful when each stream can be reviewed independently. Neroli gives each stream its own worktree so you can compare, continue, merge, or discard without mixing state.
+
+## Choose the right shape
+
+| Use this | When |
+| --- | --- |
+| One session | The task is small and one agent can finish it end to end. |
+| Multiple sessions in one worktree | Agents should share one branch, such as implement plus review or fix plus test. |
+| Multiple worktrees | Tasks should move independently or become separate pull requests. |
+| Competing worktrees | You want to compare different approaches to the same problem. |
+
+<Frame caption="Independent tasks belong in separate worktrees. Shared review or test help can happen inside one worktree.">
+  <img src="/images/parallel-sessions.svg" alt="Placeholder diagram comparing one worktree with two sessions against two separate worktrees." />
+</Frame>
+
+## Good parallel tasks
+
+- One agent updates documentation while another fixes a UI bug.
+- One agent implements a feature while another explores a refactor in a separate branch.
+- One agent writes tests for a known behavior while another works on the implementation.
+- Two agents try different designs for the same problem in separate worktrees.
+
+## Poor parallel tasks
+
+- Two agents editing the same files in different worktrees when you already know both changes must merge together.
+- A broad prompt like "clean up the app" with no boundaries.
+- Work that depends on shared local state that cannot run in separate directories.
+
+## Review parallel work
+
+Review each branch on its own first. Then decide whether to merge one, merge several in sequence, or combine work manually.
+
+<Warning>
+  Parallel work increases review load. Use it when independence is real, not just because more agents are available.
+</Warning>

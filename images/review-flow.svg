@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Review flow placeholder</title>
+  <desc id="desc">A conceptual review flow from summary to diff, verification, and merge decision.</desc>
+  <rect width="1200" height="420" rx="28" fill="#0b0f14"/>
+  <g font-family="Arial" fill="#ffffff" text-anchor="middle">
+    <rect x="80" y="120" width="220" height="150" rx="18" fill="#141b22" stroke="#314150"/>
+    <text x="190" y="190" font-size="26" font-weight="700">Summary</text>
+    <text x="190" y="230" font-size="20" fill="#a9b8c6">what changed</text>
+    <rect x="360" y="120" width="220" height="150" rx="18" fill="#141b22" stroke="#314150"/>
+    <text x="470" y="190" font-size="26" font-weight="700">Diff</text>
+    <text x="470" y="230" font-size="20" fill="#a9b8c6">changed files</text>
+    <rect x="640" y="120" width="220" height="150" rx="18" fill="#141b22" stroke="#314150"/>
+    <text x="750" y="190" font-size="26" font-weight="700">Verify</text>
+    <text x="750" y="230" font-size="20" fill="#a9b8c6">tests and logs</text>
+    <rect x="920" y="120" width="220" height="150" rx="18" fill="#2f7d68"/>
+    <text x="1030" y="190" font-size="26" font-weight="700">Decision</text>
+    <text x="1030" y="230" font-size="20" fill="#d8efe7">merge or archive</text>
+  </g>
+  <g stroke="#8fd9c4" stroke-width="5" stroke-linecap="round"><path d="M310 195h40"/><path d="M590 195h40"/><path d="M870 195h40"/></g>
+</svg>

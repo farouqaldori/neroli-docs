@@ -1,0 +1,79 @@
+---
+title: "Configure a repository"
+description: "Use repo-owned automation to make each worktree easy to set up, run, verify, and clean up."
+---
+
+Neroli reads repository-owned automation from `.neroli/automations`. Use it for commands that should be repeatable across sessions and teammates.
+
+## Create repo automation
+
+Each automation lives in its own directory:
+
+```txt
+.neroli/
+  automations/
+    run/
+      automation.json
+      run.sh
+    verify/
+      automation.json
+      run.sh
+```
+
+`automation.json` describes how the action appears and when it runs. `run.sh` performs the work.
+
+## Recommended automations
+
+| Automation | Trigger | Use it for |
+| --- | --- | --- |
+| `Set up worktree` | after worktree creation | Install dependencies, copy local config, prepare generated files. |
+| `Run` | manual, pinned | Start the app, server, watcher, or local stack. |
+| `Build` | manual, pinned | Compile the main project. |
+| `Verify` | manual | Run focused checks before review. |
+| `Clean up worktree` | before removal | Stop local processes or remove generated state. |
+
+<Frame caption="Repository automation turns repeated setup, run, build, verify, and cleanup steps into visible Neroli actions.">
+  <img src="/images/automation-strip.svg" alt="Placeholder diagram of top-bar automation buttons for setup, run, build, verify, and cleanup." />
+</Frame>
+
+## Example
+
+```json .neroli/automations/verify/automation.json
+{
+  "title": "Verify",
+  "icon": "checkmark.circle",
+  "runner": "shell",
+  "trigger": { "kind": "manual" },
+  "launchers": [
+    { "kind": "topBar", "pinned": false }
+  ],
+  "order": 2
+}
+```
+
+```sh .neroli/automations/verify/run.sh
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$NEROLI_WORKTREE_PATH"
+npm run check
+```
+
+<Tip>
+  Keep automation commands non-interactive and worktree-safe. A command should be safe to run from an isolated checkout without assuming your main repository path.
+</Tip>
+
+## Local-only setup
+
+Do not commit secrets. Use your setup script to copy or generate local files when a worktree needs them.
+
+Common examples:
+
+- `.env.local`
+- local certificates
+- generated config
+- seeded development databases
+
+## Next step
+
+Read [Automations](/reference/automations) for the file format and launcher options.

@@ -9,12 +9,55 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "pages": [
+    "groups": [
       {
         "group": "Get started",
         "pages": [
           "index",
-          "quickstart"
+          "start/install",
+          "start/first-session",
+          "start/configure-repository"
+        ]
+      },
+      {
+        "group": "Concepts",
+        "pages": [
+          "concepts/isolated-worktrees",
+          "concepts/workflow",
+          "concepts/parallel-sessions",
+          "concepts/testing",
+          "concepts/git-worktrees",
+          "concepts/cloud-handoff"
+        ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "guides/review-and-merge",
+          "guides/browser-panes",
+          "guides/ios-simulator"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "reference/automations",
+          "reference/cli",
+          "reference/agents-and-panes"
+        ]
+      },
+      {
+        "group": "Security",
+        "pages": [
+          "security/security-and-permissions",
+          "security/privacy"
+        ]
+      },
+      {
+        "group": "Troubleshooting",
+        "pages": [
+          "troubleshooting/faq",
+          "troubleshooting/issues"
         ]
       }
     ]

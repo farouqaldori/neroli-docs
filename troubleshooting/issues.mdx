@@ -1,0 +1,50 @@
+---
+title: "Troubleshooting issues"
+description: "Fix common setup, worktree, provider, and verification problems."
+---
+
+## A provider is unavailable
+
+Check that the provider CLI is installed and authenticated:
+
+```sh
+claude /login
+codex login
+```
+
+Then restart the session or open a new terminal from the same worktree.
+
+## Git status looks wrong
+
+Confirm the worktree path and branch:
+
+```sh
+pwd
+git status
+git worktree list
+```
+
+If you are in the main checkout, switch to the session's worktree before running checks.
+
+## Automation fails
+
+Run the script manually from the worktree:
+
+```sh
+cd "$NEROLI_WORKTREE_PATH"
+.neroli/automations/verify/run.sh
+```
+
+Look for assumptions about absolute paths, missing dependencies, or interactive prompts.
+
+## Browser pane shows stale content
+
+Restart the project run command, then reload the browser pane. If the page is cached at the edge, test with a no-cache request or clear the relevant cache.
+
+## Cloud handoff fails
+
+Read the visible status message first. Common causes include expired auth, missing runtime capacity, unsupported provider state, or workspace hydration failure.
+
+<Tip>
+  The fastest useful bug report includes the worktree branch, the failing command, the visible error, and whether the same command works outside Neroli.
+</Tip>

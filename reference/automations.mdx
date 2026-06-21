@@ -1,0 +1,60 @@
+---
+title: "Automations"
+description: "Reference for repo-owned Neroli automation actions."
+---
+
+Automations are repository-owned actions that appear in Neroli and run shell commands from a worktree.
+
+## File layout
+
+```txt
+.neroli/
+  automations/
+    <automation-id>/
+      automation.json
+      run.sh
+```
+
+## `automation.json`
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `title` | string | Display name in the app. |
+| `icon` | string | SF Symbol-style icon name. |
+| `runner` | string | Usually `shell`. |
+| `enabled` | boolean | Whether the automation is available. |
+| `inTerminal` | boolean | Whether to run in a terminal pane. |
+| `order` | number | Sort order for launchers. |
+| `trigger` | object | Manual or lifecycle trigger. |
+| `launchers` | array | Where the action appears, such as the top bar. |
+
+## Triggers
+
+```json Manual trigger
+{ "kind": "manual" }
+```
+
+```json Lifecycle trigger
+{
+  "kind": "lifecycle",
+  "event": "created",
+  "timing": "after"
+}
+```
+
+Use lifecycle triggers for setup and cleanup. Use manual triggers for actions a human should choose, such as run, build, or verify.
+
+## Launchers
+
+```json Top-bar launcher
+{
+  "kind": "topBar",
+  "pinned": true
+}
+```
+
+Pinned top-bar actions are visible immediately. Unpinned actions are better for useful but less frequent commands.
+
+<Tip>
+  Keep automation scripts short. If a command becomes complex, call a repository script such as `scripts/check.sh` and document that script in the repo.
+</Tip>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-labelledby="title desc">
+  <title id="title">iOS simulator pane placeholder</title>
+  <desc id="desc">A worktree build connected to an iOS simulator pane and UI inspection output.</desc>
+  <rect width="1200" height="460" rx="28" fill="#0b0f14"/>
+  <rect x="90" y="90" width="320" height="280" rx="20" fill="#141b22" stroke="#314150"/>
+  <text x="130" y="150" fill="#ffffff" font-family="Arial" font-size="28" font-weight="700">Worktree build</text>
+  <text x="130" y="205" fill="#a9b8c6" font-family="Arial" font-size="22">build-mobile.sh</text>
+  <rect x="545" y="70" width="180" height="320" rx="36" fill="#141b22" stroke="#2f7d68" stroke-width="4"/>
+  <rect x="570" y="115" width="130" height="220" rx="16" fill="#22322f"/>
+  <text x="635" y="235" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="22">App UI</text>
+  <rect x="820" y="90" width="290" height="280" rx="20" fill="#141b22" stroke="#314150"/>
+  <text x="865" y="150" fill="#ffffff" font-family="Arial" font-size="28" font-weight="700">Inspect</text>
+  <text x="865" y="205" fill="#a9b8c6" font-family="Arial" font-size="22">screenshot</text>
+  <text x="865" y="245" fill="#a9b8c6" font-family="Arial" font-size="22">describe-ui</text>
+  <text x="865" y="285" fill="#a9b8c6" font-family="Arial" font-size="22">tap</text>
+  <path d="M420 230h110" stroke="#8fd9c4" stroke-width="5" stroke-linecap="round"/>
+  <path d="M735 230h75" stroke="#8fd9c4" stroke-width="5" stroke-linecap="round"/>
+</svg>

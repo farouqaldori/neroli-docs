@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Cloud handoff placeholder</title>
+  <desc id="desc">A local session moving to cloud runtime and back to local review.</desc>
+  <rect width="1200" height="420" rx="28" fill="#0b0f14"/>
+  <g font-family="Arial" fill="#ffffff" text-anchor="middle">
+    <rect x="90" y="125" width="260" height="150" rx="22" fill="#141b22" stroke="#314150"/>
+    <text x="220" y="190" font-size="26" font-weight="700">Local worktree</text>
+    <text x="220" y="230" font-size="21" fill="#a9b8c6">Mac session</text>
+    <rect x="470" y="95" width="260" height="210" rx="80" fill="#14211f" stroke="#2f7d68"/>
+    <text x="600" y="190" font-size="28" font-weight="700">Cloud runtime</text>
+    <text x="600" y="230" font-size="21" fill="#a9b8c6">checkpoint + run</text>
+    <rect x="850" y="125" width="260" height="150" rx="22" fill="#141b22" stroke="#314150"/>
+    <text x="980" y="190" font-size="26" font-weight="700">Local review</text>
+    <text x="980" y="230" font-size="21" fill="#a9b8c6">diff + merge</text>
+  </g>
+  <g stroke="#8fd9c4" stroke-width="5" stroke-linecap="round"><path d="M360 200h100"/><path d="M740 200h100"/></g>
+</svg>

@@ -1,0 +1,62 @@
+---
+title: "Install"
+description: "Get Neroli running on your Mac."
+---
+
+Neroli is a macOS app for local and cloud-assisted agent work. Install the app, then make sure the command-line tools you plan to use are available in your terminal environment.
+
+## Requirements
+
+- macOS 15.6 or later.
+- Git installed and available in your shell.
+- At least one supported agent provider, such as Claude Code or Codex.
+- GitHub CLI authentication if you want GitHub-backed workflows.
+
+<Frame caption="The install path is short: install the app, connect the tools you use, then open a repository.">
+  <img src="/images/install-checks.svg" alt="Placeholder diagram showing app install, provider login, GitHub login, and repository selection." />
+</Frame>
+
+## Install the app
+
+<Steps>
+  <Step title="Download Neroli">
+    Download the latest Neroli build from the website or your team distribution channel.
+  </Step>
+
+  <Step title="Move it to Applications">
+    Drag `Neroli.app` into `/Applications`.
+  </Step>
+
+  <Step title="Open Neroli">
+    Launch Neroli. macOS may ask you to confirm that you want to open the app.
+  </Step>
+</Steps>
+
+## Check provider access
+
+Run the commands for the tools you plan to use:
+
+```sh
+git --version
+gh auth status
+claude /login
+codex login
+```
+
+<Note>
+  You do not need every provider. Start with the one you already use, then add more later from settings or your shell.
+</Note>
+
+## Install the CLI
+
+Neroli includes a `neroli` command for browser panes, simulator control, automations, session inspection, and workspace activity.
+
+```sh
+neroli --help
+```
+
+If the command is not available, open Neroli and use the app's CLI install flow.
+
+## Next step
+
+Create [your first session](/start/first-session).

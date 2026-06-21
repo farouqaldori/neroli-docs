@@ -1,0 +1,70 @@
+---
+title: "Workflow"
+description: "How Neroli turns isolated agent sessions into reviewed code changes."
+---
+
+Neroli is designed around a simple loop: create an isolated stream of work, give an agent context, observe what happens, verify it, then decide what to keep.
+
+<Frame caption="The Neroli loop: choose work, run a session, observe panes, verify, review the diff, then merge or archive.">
+  <img src="/images/workflow-loop.svg" alt="Placeholder diagram of the Neroli workflow loop from task to review and archive." />
+</Frame>
+
+## The default loop
+
+<Steps>
+  <Step title="Start from a repository">
+    Open a Git repository in Neroli.
+  </Step>
+
+  <Step title="Create a session">
+    Create a worktree for a task and start the agent provider you want to use.
+  </Step>
+
+  <Step title="Add context">
+    Attach files, screenshots, logs, or instructions that define the task.
+  </Step>
+
+  <Step title="Observe the work">
+    Watch terminal output, browser state, simulator state, and changed files while the session runs.
+  </Step>
+
+  <Step title="Verify">
+    Run the relevant automation or terminal command from that worktree.
+  </Step>
+
+  <Step title="Review and decide">
+    Inspect the diff. Merge, open a pull request, continue the session, or archive the worktree.
+  </Step>
+</Steps>
+
+## Local and cloud work
+
+<Tabs>
+  <Tab title="Local">
+    Local sessions run on your Mac, in a worktree under Neroli's app-support directory. This is the normal path for quick work, UI inspection, and commands that depend on local tools.
+  </Tab>
+
+  <Tab title="Cloud">
+    Cloud handoff is for supported sessions that should keep running away from your Mac. Neroli transfers workspace state, restores panes where possible, and syncs the result back when you move the session local again.
+  </Tab>
+</Tabs>
+
+## What to watch
+
+- **Terminal output:** build, test, and agent command logs.
+- **Changed files:** the actual Git diff for the worktree.
+- **Panes:** browser, simulator, and other surfaces attached to the session.
+- **Status:** whether the session is running, waiting, failed, or ready for review.
+
+## Completion criteria
+
+A session is ready to merge only when:
+
+- The diff matches the requested task.
+- Verification passed or the remaining risk is understood.
+- There are no accidental unrelated files.
+- Any local-only files or generated artifacts are excluded.
+
+<Tip>
+  Ask the agent to summarize what changed and how it verified the work. Then confirm against the diff yourself.
+</Tip>

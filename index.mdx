@@ -1,12 +1,64 @@
 ---
 title: "Introduction"
-description: "Bare-bones documentation for Neroli."
+description: "Learn what Neroli is and where to start."
 ---
 
-Neroli is a Mac app for running AI coding agents in isolated worktrees.
+Neroli is a native Mac app for coordinating AI coding agents across isolated Git worktrees.
 
-Use it to start parallel coding sessions, watch what each agent changed, and keep work separated until you are ready to review or merge it.
+Use Neroli when you want to run agent work in parallel, see what each session changed, keep terminals and browser panes attached to the right worktree, and review the result before merging.
 
-<Card title="Quickstart" icon="rocket" href="/quickstart">
-  Set up Neroli and start your first agent session.
-</Card>
+<Frame caption="A Neroli workspace keeps each agent session, branch, terminal, browser pane, and diff tied to one isolated stream of work.">
+  <img src="/images/neroli-workspace-overview.svg" alt="Placeholder diagram of a Neroli workspace with a sidebar, active session, panes, and diff review." />
+</Frame>
+
+## Start here
+
+<CardGroup cols={2}>
+  <Card title="Install Neroli" icon="download" href="/start/install">
+    Get the Mac app ready and check the tools Neroli uses.
+  </Card>
+
+  <Card title="Your first session" icon="sparkles" href="/start/first-session">
+    Open a repository, create a worktree, start an agent, and review the result.
+  </Card>
+
+  <Card title="Configure a repository" icon="settings" href="/start/configure-repository">
+    Add repo-owned automation so every worktree starts and runs consistently.
+  </Card>
+
+  <Card title="Understand the workflow" icon="git-branch" href="/concepts/workflow">
+    Learn how Neroli moves work from idea to reviewed branch.
+  </Card>
+</CardGroup>
+
+## What Neroli helps with
+
+- Running Claude, Codex, and shell-based workflows in isolated worktrees.
+- Keeping parallel tasks separate until you decide what to merge.
+- Watching files, terminal output, browser state, simulator state, and diffs in one place.
+- Capturing repeatable project actions as `.neroli/automations`.
+- Moving supported sessions between local and cloud runtime when cloud is enabled.
+
+<Info>
+  Neroli isolates development state. It is not a sandbox boundary. Local commands and agents still run with your macOS user permissions.
+</Info>
+
+## Learn the model
+
+<CardGroup cols={2}>
+  <Card title="Isolated worktrees" icon="folder-tree" href="/concepts/isolated-worktrees">
+    Understand workspaces, sessions, branches, worktrees, and panes.
+  </Card>
+
+  <Card title="Parallel sessions" icon="split" href="/concepts/parallel-sessions">
+    Decide when to use one session, multiple sessions, or multiple worktrees.
+  </Card>
+
+  <Card title="Testing" icon="check-circle" href="/concepts/testing">
+    Run checks from the right worktree and keep verification visible.
+  </Card>
+
+  <Card title="Cloud handoff" icon="cloud" href="/concepts/cloud-handoff">
+    Understand what happens when supported work moves between local and cloud.
+  </Card>
+</CardGroup>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Worktree model placeholder</title>
+  <desc id="desc">A repository workspace with multiple worktrees and sessions.</desc>
+  <rect width="1200" height="520" rx="28" fill="#0b0f14"/>
+  <text x="70" y="74" fill="#ffffff" font-family="Arial" font-size="34" font-weight="700">Repository workspace</text>
+  <rect x="70" y="120" width="320" height="320" rx="20" fill="#141b22" stroke="#314150"/>
+  <text x="120" y="180" fill="#d8efe7" font-family="Arial" font-size="26">main checkout</text>
+  <rect x="450" y="120" width="300" height="320" rx="20" fill="#141b22" stroke="#2f7d68"/>
+  <text x="500" y="180" fill="#d8efe7" font-family="Arial" font-size="26">worktree A</text>
+  <text x="500" y="230" fill="#a9b8c6" font-family="Arial" font-size="21">branch: feature-a</text>
+  <text x="500" y="270" fill="#a9b8c6" font-family="Arial" font-size="21">session + panes</text>
+  <rect x="810" y="120" width="300" height="320" rx="20" fill="#141b22" stroke="#2f7d68"/>
+  <text x="860" y="180" fill="#d8efe7" font-family="Arial" font-size="26">worktree B</text>
+  <text x="860" y="230" fill="#a9b8c6" font-family="Arial" font-size="21">branch: feature-b</text>
+  <text x="860" y="270" fill="#a9b8c6" font-family="Arial" font-size="21">session + panes</text>
+</svg>

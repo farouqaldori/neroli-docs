@@ -1,0 +1,43 @@
+---
+title: "Use the iOS simulator"
+description: "Drive this workspace's dedicated simulator from Neroli."
+---
+
+Neroli can attach an iOS simulator pane to a workspace. Use it for mobile UI checks, screenshots, accessibility inspection, and touch input.
+
+<Frame caption="The simulator pane keeps mobile UI state attached to the same worktree that built and installed the app.">
+  <img src="/images/ios-simulator-pane.svg" alt="Placeholder diagram showing a worktree build connected to an iOS simulator pane and UI inspection." />
+</Frame>
+
+## Common commands
+
+```sh
+neroli ios-simulator status
+neroli ios-simulator screenshot
+neroli ios-simulator describe-ui
+neroli ios-simulator tap 0.5 0.7
+```
+
+## Recommended flow
+
+<Steps>
+  <Step title="Build the app">
+    Build with the repository's simulator script from the current worktree.
+  </Step>
+
+  <Step title="Install and launch">
+    Install onto this workspace's simulator through Neroli, then launch the bundle.
+  </Step>
+
+  <Step title="Inspect UI">
+    Use screenshots and accessibility descriptions before tapping.
+  </Step>
+
+  <Step title="Verify the change">
+    Capture the final state or report exactly what still needs manual review.
+  </Step>
+</Steps>
+
+<Info>
+  Each Neroli workspace owns its active simulator target. Do not pick random simulator devices from `xcrun simctl list` when working inside Neroli.
+</Info>
