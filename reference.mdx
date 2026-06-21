@@ -42,6 +42,30 @@ Common groups:
 This is why agents can create automations, inspect recent sessions, use attached
 browsers, and keep work tied to the right workspace.
 
+## Useful agent requests
+
+Ask agents to use Neroli when the answer depends on workspace context:
+
+```txt
+Use the attached Neroli browser to verify this UI flow.
+```
+
+```txt
+Inspect recent Neroli sessions and suggest automations that would make this repo easier to work in.
+```
+
+```txt
+Create a Run, Stop, and Verify automation for this workspace.
+```
+
+```txt
+Update the docs from the feature you just shipped, then open the generated page or artifact for review.
+```
+
+Those requests work because the agent can discover the current session, panes,
+services, automations, and run history through Neroli instead of guessing from
+the shell alone.
+
 ## Safety rules
 
 - A worktree is isolation for review, not a security sandbox.

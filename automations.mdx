@@ -3,15 +3,18 @@ title: "Automations"
 description: "Teach your workspace how to run itself."
 ---
 
-Automations are how your workspace learns to operate itself.
+Automations are how your workspace learns to operate itself. They turn repeated
+setup, run, verify, cleanup, and review steps into actions that humans and
+agents can both use.
 
 They can be scripts, like copying env files or starting Docker. They can also
 launch agents, like a session that reviews recent Neroli runs and suggests
 better automations. Claude, Codex, OpenCode, and other agents can create or
 update automations from inside Neroli.
 
-Agents launched inside Neroli know about the current session, visible panes, and
-available automations, so they can use the same workspace controls you do.
+Agents launched inside Neroli know about the current session, visible panes,
+attached browser, simulator, known services, and available automations, so they
+can use the same workspace controls you do.
 
 <Frame caption="Automations can be toolbar buttons, lifecycle hooks, scheduled agent sessions, or cleanup scripts with stop behavior.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
@@ -41,6 +44,7 @@ created, moved, archived, or removed.
 | Improve my automations | Agentic automation that inspects recent sessions and proposes easier setup/run/verify flows. |
 | Docs from shipped work | Agentic automation that drafts docs updates from new features and merged sessions. |
 | Review before merge | Agentic automation that checks diffs, migrations, env changes, tests, docs gaps, and risky files. |
+| Browser verification | Opens the app, drives the attached browser, and captures evidence for the review. |
 
 ## The isolated dev environment pattern
 
@@ -83,6 +87,16 @@ Create Neroli automations for this repo:
 
 It can inspect package scripts, Docker config, previous commands, and failed
 sessions, then create automations that make the next session smoother.
+
+## Make automations visible
+
+Good automations should be easy to launch from where the work happens:
+
+- pin Run, Build, and Verify in the session toolbar
+- keep Stop paired with anything that starts a server or service
+- use lifecycle setup when every new session needs the same preparation
+- use scheduled or agentic automations for ongoing maintenance, docs, and improvements
+- keep personal machine-specific actions local, and share repo-wide actions with the team
 
 <Tip>
   Shared automations can live with the repo. Personal automations can stay local to your machine.

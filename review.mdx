@@ -7,8 +7,9 @@ Neroli lets you run a lot of work at once. Review is where that work turns into
 a decision.
 
 You do not have to read every line cold. Ask the agent to review its own work
-first: explain the change, check the diff, run the right automations, fix
-anything obvious, and leave you with a clean summary. Then you decide what lands.
+first: explain the change, check the diff, run the right automations, capture
+browser or simulator evidence when relevant, fix anything obvious, and leave
+you with a clean summary. Then you decide what lands.
 
 <Frame caption="Review starts with an agent self-review, then ends with your decision: continue, merge, open a pull request, or archive.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
@@ -37,6 +38,10 @@ anything obvious, and leave you with a clean summary. Then you decide what lands
 
   <Step title="Verify from the session">
     Use the same Build, Verify, browser, simulator, or terminal automations attached to that session.
+  </Step>
+
+  <Step title="Look at evidence">
+    Use browser state, screenshots, simulator output, artifacts, generated docs, logs, and diffs as review evidence.
   </Step>
 
   <Step title="Decide">
@@ -70,12 +75,23 @@ Ask each branch for a self-review first. Then compare the summaries, diffs, and
 verification results. Merge one, merge several in sequence, continue the best
 session, or combine work manually when that is the right call.
 
+## What good evidence looks like
+
+| Work | Evidence to ask for |
+| --- | --- |
+| UI change | Browser or simulator screenshot, route tested, and visible behavior summary. |
+| Backend change | Relevant test output, logs, migration notes, and failure mode summary. |
+| Docs change | Rendered page check, broken-link result, and what changed for the reader. |
+| Automation change | Run log, stop behavior if applicable, and when it should be used. |
+| Cloud work | Handoff state, local verification after bring-back, and any recovery messages. |
+
 ## Red flags
 
 - the self-review is vague or skips the risky parts
 - the diff is larger than expected
 - tests were deleted instead of fixed
 - verification ran from another session
+- evidence is missing for a user-visible change
 - cloud returned changes that were not checked locally
 - conflict warnings show another session touched the same file or flow
 

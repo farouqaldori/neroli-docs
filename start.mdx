@@ -3,8 +3,9 @@ title: "Start"
 description: "Open Neroli and get into the agent flow quickly."
 ---
 
-Open the app, pick a repo, choose your agent, and keep moving. Claude, Codex,
-OpenCode, or another provider can all fit the same workspace.
+Open the app, pick a repo, choose your agent, and keep moving. The first win is
+simple: get one useful agent session running without leaving a trail of terminal
+tabs behind.
 
 <Frame caption="The first-run flow is repo, provider, session, panes, and work in motion.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
@@ -53,6 +54,33 @@ Neroli keeps attention visible as work runs. You can see which sessions are
 running, which ones need approval or input, which checks failed, and which work
 is ready to review.
 
+## Your first hour
+
+Use the first hour to make the workspace feel smooth. You can add deeper setup
+later.
+
+<Steps>
+  <Step title="Run one real task">
+    Start with a task you would have given an agent anyway. Watch how the TUI, worktree, panes, and status stay together.
+  </Step>
+
+  <Step title="Add one verification pane">
+    Open the browser for a web flow, the simulator for an iOS flow, or a diff/file viewer for generated output.
+  </Step>
+
+  <Step title="Create Run and Verify">
+    Add the two automations you will use constantly: one to start the app, one to check the work.
+  </Step>
+
+  <Step title="Start a second session">
+    Run a docs update, review pass, experiment, or test improvement in parallel so the isolation becomes obvious.
+  </Step>
+
+  <Step title="Ask for self-review">
+    Have the agent summarize the change, run checks, inspect its diff, and fix obvious issues before you review.
+  </Step>
+</Steps>
+
 ## A simple prompt
 
 ```txt
@@ -68,6 +96,10 @@ the session organized while the agent works.
 Manual launch is enough for day one. Once a repo becomes a workspace, add
 automations that prepare sessions, copy env files, assign ports, run dev
 servers, stop stacks, verify changes, and launch agentic helpers.
+
+You can ask an agent to set those up. The Neroli CLI is mostly for agents and
+automations, so they can discover the current session, panes, browsers,
+simulator, and existing actions without guessing.
 
 Next: understand the core model in [Concepts](/concepts), then make every new
 session easier with [Automations](/automations).

@@ -27,6 +27,17 @@ together.
 This is what lets you run multiple agents without losing track of which files,
 commands, browser, or review belong to which job.
 
+## What belongs to a session
+
+| Session piece | Why it matters |
+| --- | --- |
+| Provider conversation | The agent chat stays tied to the work it produced. |
+| Worktree and branch | Files stay isolated until you choose what lands. |
+| Panes | The browser, simulator, terminals, diffs, and file viewers stay with the task. |
+| Automations | Run, Build, Verify, Stop, and setup happen from the right workspace. |
+| Artifacts | Generated images, PDFs, markdown, notebooks, and spreadsheets stay reviewable. |
+| Status | Waiting, failed, blocked, cloud, ready, and review states are visible. |
+
 ## Why direct TUIs matter
 
 Neroli launches the real provider interfaces directly. That keeps the app fast
@@ -60,6 +71,14 @@ desktop.
 Neroli tracks whether a session is running, waiting for input, asking for
 approval, blocked, failed, ready for review, local, or cloud. The point is not
 to watch every token. The point is to know which session needs attention.
+
+## Agents can use the workspace too
+
+The Neroli CLI is mostly for agents and automations. It lets them inspect the
+current workspace, attached panes, browser, simulator, known services, recent
+sessions, and saved automations. That is why you can ask an agent to run the
+browser, verify a UI flow, create setup automations, or analyze recent sessions
+without handing it a pile of local paths.
 
 ## The useful habit
 

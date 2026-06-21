@@ -3,8 +3,8 @@ title: "Recipes and gotchas"
 description: "High-leverage Neroli workflows, plus the things that usually trip people up."
 ---
 
-These are the workflows that make Neroli feel different from a pile of terminal
-tabs. Start with one or two. Add more when a repeated task slows you down.
+These are the workflows that make Neroli feel different from scattered terminal
+tabs. Start with the one that removes the most friction from your current repo.
 
 ## Isolated dev sessions
 
@@ -55,6 +55,34 @@ Use this when you want several directions explored without mixing files.
   The point is not to make every task tiny. The point is to keep each stream of work inspectable.
 </Tip>
 
+## Browser verification
+
+Use this when an agent changes a visible web flow.
+
+<Steps>
+  <Step title="Start the app from the session">
+    Use the session's Run automation so the browser points at the right worktree.
+  </Step>
+
+  <Step title="Open the attached browser">
+    Keep the page in a Neroli pane so the agent and human are looking at the same UI.
+  </Step>
+
+  <Step title="Ask the agent to verify">
+    Have it inspect the page, click through the changed flow, check console or network evidence when useful, and report what it saw.
+  </Step>
+
+  <Step title="Review the evidence">
+    Use the browser state, screenshots, logs, and diff together before merging.
+  </Step>
+</Steps>
+
+```txt
+Verify the UI change in the attached Neroli browser.
+Use the session's Run automation if needed, inspect the changed route, capture
+what you saw, and tell me any console, network, or visual issues.
+```
+
 ## Cloud handoff
 
 Use this when a session should keep running away from your Mac, or when you want
@@ -97,6 +125,17 @@ what still needs my attention.
 Good self-review includes the changed behavior, verification result, known
 risks, and any files you should inspect manually.
 
+## Keep artifacts reviewable
+
+Use this when agents generate docs, images, PDFs, spreadsheets, notebooks, or
+other output files.
+
+- keep source-code edits in Changes
+- keep generated outputs visible as artifacts
+- ask the agent which artifacts are final and which are scratch
+- open important artifacts in a file viewer before merging
+- ignore bulky build outputs unless they are intentional deliverables
+
 ## Gotchas
 
 | Gotcha | What to do |
@@ -105,6 +144,7 @@ risks, and any files you should inspect manually.
 | A command ran from the wrong repo | Run it from the session pane or session automation. |
 | Verify passes outside Neroli but fails inside | Compare env, paths, generated files, and session setup. |
 | Browser looks stale | Restart the session's Run action and reload the attached browser pane. |
+| Browser verification used the wrong app | Start the app from the session's Run automation, then reload the attached browser. |
 | Cloud fails during handoff | Read the recovery message, then fix setup, auth, network access, or pending sync. |
 | Simulator or preview missing in cloud | Keep that work local; those panes depend on your Mac. |
 | Generated files are noisy | Keep build outputs ignored unless they are real review artifacts. |
