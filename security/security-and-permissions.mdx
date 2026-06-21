@@ -1,20 +1,24 @@
 ---
 title: "Security and permissions"
-description: "Understand local execution, worktree isolation, approvals, and secrets."
+description: "Understand local execution, session isolation, approvals, and secrets."
 ---
 
-Neroli is a developer tool. It runs local commands and agent providers against your repositories, so it should be treated with the same care as a terminal.
+Neroli gives agents a clearer review path, not unlimited trust. It runs local
+commands and agent providers against your repositories, so treat it with the
+same care as a terminal.
 
 ## What isolation means
 
-Worktrees isolate development state:
+Neroli isolates development state:
 
 - Separate directories.
 - Separate branches.
 - Separate running commands.
 - Separate review surfaces.
 
-They do not isolate macOS user permissions. A local command can access what your user account can access unless the command or provider adds its own restrictions.
+That isolation helps review, but it is not a security sandbox. A local command
+can access what your macOS user account can access unless the command or
+provider adds its own restrictions.
 
 ## Secrets
 
@@ -39,5 +43,5 @@ Review agent output before merging. Pay special attention to:
 - Files outside the requested task.
 
 <Warning>
-  Do not run destructive commands from an agent session unless you understand the command and the target worktree.
+  Do not run destructive commands from an agent session unless you understand the command and the target session.
 </Warning>

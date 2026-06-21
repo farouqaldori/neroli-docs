@@ -3,22 +3,26 @@ title: "Isolated worktrees"
 description: "Understand repositories, workspaces, sessions, branches, worktrees, and panes."
 ---
 
-Neroli uses Git worktrees to separate agent work. Each worktree is a real checkout with its own branch, files, terminal processes, and panes.
+You do not need to think about Git worktrees to use Neroli, but they explain why
+parallel sessions stay manageable. Each session gets a real checkout with its
+own branch, files, running processes, panes, and diff.
+
+<Frame caption="A Neroli workspace can contain many isolated sessions, each with its own branch, panes, and review decision.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: one repository workspace with three session lanes, each showing branch, panes, changed files, and review status.
+  </div>
+</Frame>
 
 ## Core model
 
 | Term | What it means in Neroli |
 | --- | --- |
 | Repository | A Git codebase that Neroli can open. |
-| Workspace | The Neroli entry for a repository. It contains sessions, worktrees, automation, and panes. |
+| Workspace | The Neroli entry for a repository. It contains sessions, worktrees, actions, and panes. |
 | Worktree | A separate checkout for one stream of work. It usually maps to one branch. |
 | Session | An agent run inside a worktree. A session can be Claude, Codex, shell, or another supported runtime. |
 | Pane | A visible surface attached to a session, such as terminal, browser, simulator, diff, or logs. |
-| Automation | A repo-owned action that can run manually or on lifecycle events. |
-
-<Frame caption="A workspace can contain many worktrees. Each worktree can have agent sessions, panes, processes, and diffs tied to its branch.">
-  <img src="/images/worktree-model.svg" alt="Placeholder diagram showing a repository workspace containing multiple isolated worktrees and sessions." />
-</Frame>
+| Action | A repo-owned automation that can run manually or on lifecycle events. |
 
 ## What isolation gives you
 
@@ -29,7 +33,7 @@ Neroli uses Git worktrees to separate agent work. Each worktree is a real checko
 - You can archive or remove a worktree without touching unrelated sessions.
 
 <Warning>
-  A worktree is not a security sandbox. Agents and commands can still access files and network resources allowed to your macOS user.
+  A worktree is not a security sandbox. Agents and commands can still access what your macOS user can access.
 </Warning>
 
 ## Branches and review
@@ -51,7 +55,9 @@ Poor branch boundaries:
 
 ## Existing branches
 
-You can use Neroli with existing Git worktrees and branches. If a branch is already checked out in another worktree, Git will not let a second worktree check out the same branch at the same time.
+You can use Neroli with existing Git worktrees and branches. If a branch is
+already checked out elsewhere, Git will not let a second worktree check it out
+at the same time.
 
 Use a new branch name when you want a second isolated attempt from the same starting point.
 

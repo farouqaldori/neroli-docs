@@ -4,42 +4,42 @@
   "name": "Neroli",
   "colors": {
     "primary": "#111111",
-    "light": "#2f7d68",
-    "dark": "#8fd9c4"
+    "light": "#42b892",
+    "dark": "#33866f"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "groups": [
       {
-        "group": "Get started",
+        "group": "Start here",
         "pages": [
           "index",
           "start/install",
           "start/first-session",
-          "start/configure-repository"
+          "guides/review-and-merge",
+          "concepts/parallel-sessions"
         ]
       },
       {
-        "group": "Concepts",
+        "group": "Make Neroli yours",
         "pages": [
-          "concepts/isolated-worktrees",
-          "concepts/workflow",
-          "concepts/parallel-sessions",
-          "concepts/testing",
-          "concepts/git-worktrees",
+          "start/configure-repository",
+          "guides/browser-panes",
+          "guides/ios-simulator",
           "concepts/cloud-handoff"
         ]
       },
       {
-        "group": "Guides",
+        "group": "How it works",
         "pages": [
-          "guides/review-and-merge",
-          "guides/browser-panes",
-          "guides/ios-simulator"
+          "concepts/workflow",
+          "concepts/isolated-worktrees",
+          "concepts/testing",
+          "concepts/git-worktrees"
         ]
       },
       {
-        "group": "Reference",
+        "group": "Reference for agents",
         "pages": [
           "reference/automations",
           "reference/cli",
@@ -75,7 +75,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Open app",
+      "label": "Get Neroli",
       "href": "https://neroli.dev"
     }
   },

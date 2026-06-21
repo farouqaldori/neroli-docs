@@ -1,13 +1,35 @@
 ---
 title: "Configure a repository"
-description: "Use repo-owned automation to make each worktree easy to set up, run, verify, and clean up."
+description: "Make every Neroli session easy to set up, run, verify, and clean up."
 ---
 
-Neroli reads repository-owned automation from `.neroli/automations`. Use it for commands that should be repeatable across sessions and teammates.
+A good Neroli workspace is predictable. Every session should know how to install
+what it needs, start the app, verify changes, and clean up after itself.
 
-## Create repo automation
+Use repo-owned actions for anything the team repeats. They appear in the app so
+you and your agents can run the same workflow from the right session.
 
-Each automation lives in its own directory:
+<Frame caption="Repository actions turn setup, run, build, verify, and cleanup into visible session buttons.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: a Neroli top bar with Setup, Run, Build, Verify, and Clean Up actions attached to one session.
+  </div>
+</Frame>
+
+## Decide what should be repeatable
+
+Start with the workflows that remove guesswork:
+
+| Action | Use it for |
+| --- | --- |
+| Set up session | Install dependencies, copy local config, prepare generated files. |
+| Run | Start the app, server, watcher, or local stack. |
+| Build | Compile the main project. |
+| Verify | Run focused checks before review. |
+| Clean up | Stop local processes or remove generated state. |
+
+## Store actions in the repo
+
+Each action lives in its own directory:
 
 ```txt
 .neroli/
@@ -21,20 +43,6 @@ Each automation lives in its own directory:
 ```
 
 `automation.json` describes how the action appears and when it runs. `run.sh` performs the work.
-
-## Recommended automations
-
-| Automation | Trigger | Use it for |
-| --- | --- | --- |
-| `Set up worktree` | after worktree creation | Install dependencies, copy local config, prepare generated files. |
-| `Run` | manual, pinned | Start the app, server, watcher, or local stack. |
-| `Build` | manual, pinned | Compile the main project. |
-| `Verify` | manual | Run focused checks before review. |
-| `Clean up worktree` | before removal | Stop local processes or remove generated state. |
-
-<Frame caption="Repository automation turns repeated setup, run, build, verify, and cleanup steps into visible Neroli actions.">
-  <img src="/images/automation-strip.svg" alt="Placeholder diagram of top-bar automation buttons for setup, run, build, verify, and cleanup." />
-</Frame>
 
 ## Example
 
@@ -60,12 +68,12 @@ npm run check
 ```
 
 <Tip>
-  Keep automation commands non-interactive and worktree-safe. A command should be safe to run from an isolated checkout without assuming your main repository path.
+  Keep action scripts non-interactive and session-safe. They should not assume your main repository path.
 </Tip>
 
 ## Local-only setup
 
-Do not commit secrets. Use your setup script to copy or generate local files when a worktree needs them.
+Do not commit secrets. Use your setup script to copy or generate local files when a session needs them.
 
 Common examples:
 

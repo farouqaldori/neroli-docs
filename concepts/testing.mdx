@@ -1,15 +1,22 @@
 ---
 title: "Testing"
-description: "Run checks from the worktree that owns the changes."
+description: "Run checks from the session that owns the changes."
 ---
 
-Every worktree can have its own dependencies, processes, and local state. Run checks from the same worktree that contains the changes you are reviewing.
+Verification is how a session earns trust. Run checks from the same session that
+owns the changes, then keep the result with the review.
+
+<Frame caption="The safest check is the one run from the same session, against the same files, before review.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: one session connected to Verify, terminal, browser, and iOS simulator evidence.
+  </div>
+</Frame>
 
 ## Testing paths
 
 <Tabs>
-  <Tab title="Automation">
-    Use a `Verify`, `Build`, or project-specific automation when the command should be repeatable and visible in the Neroli UI.
+  <Tab title="Saved action">
+    Use `Verify`, `Build`, or a project-specific action when the check should be repeatable and visible in Neroli.
   </Tab>
 
   <Tab title="Terminal">
@@ -21,7 +28,7 @@ Every worktree can have its own dependencies, processes, and local state. Run ch
   </Tab>
 
   <Tab title="iOS simulator">
-    Use the simulator pane and `neroli ios-simulator` commands for iOS UI verification.
+    Use the simulator pane when a mobile change needs screenshots, touch input, or accessibility inspection.
   </Tab>
 </Tabs>
 
@@ -32,11 +39,7 @@ Every worktree can have its own dependencies, processes, and local state. Run ch
 | Swift macOS app | `cd macos && scripts/build.sh` |
 | Backend | `cd backend && npm run check` |
 | Website | `cd website && npm run check` |
-| Docs | `mint dev` or Mintlify validation if available |
-
-<Frame caption="The safest check is the one run from the same worktree, against the same files, before review.">
-  <img src="/images/testing-paths.svg" alt="Placeholder diagram showing automation, terminal, browser, and simulator verification paths." />
-</Frame>
+| Docs | Mintlify validation or local docs preview |
 
 ## What to record
 
@@ -50,3 +53,9 @@ Ask the session to report:
 <Info>
   Passing tests are not a substitute for diff review. They only lower the risk of accepting the change.
 </Info>
+
+## Next step
+
+<Card title="Review and merge" icon="git-pull-request" href="/guides/review-and-merge">
+  Use verification evidence to make the final shipping decision.
+</Card>

@@ -3,7 +3,9 @@ title: "Git worktrees"
 description: "Understand the Git mechanism behind Neroli work isolation."
 ---
 
-Git worktrees let one repository have multiple checked-out working directories at the same time. Neroli uses them so each agent stream can have its own directory and branch.
+Git worktrees let one repository have multiple checked-out working directories at
+the same time. Neroli uses them behind the scenes so each session can have its
+own directory and branch.
 
 ## Why worktrees matter
 
@@ -33,5 +35,5 @@ git diff
 ```
 
 <Tip>
-  When troubleshooting, first confirm which worktree path your terminal is in. Most confusing Git issues come from running a command in the wrong checkout.
+  When troubleshooting, first confirm which session path your terminal is in. Many Git issues come from running a command in the wrong checkout.
 </Tip>

@@ -1,9 +1,15 @@
 ---
 title: "Automations"
-description: "Reference for repo-owned Neroli automation actions."
+description: "Reference for repo-owned actions used by humans and agents."
 ---
 
-Automations are repository-owned actions that appear in Neroli and run shell commands from a worktree.
+Automations are repository-owned actions that appear in Neroli. Use them for
+repeatable setup, run, build, verify, and cleanup workflows that should execute
+from the current session.
+
+In the app, users experience automations as action buttons. Agents and
+advanced contributors use this reference when they need to inspect or improve
+the files behind those buttons.
 
 ## File layout
 
@@ -27,6 +33,16 @@ Automations are repository-owned actions that appear in Neroli and run shell com
 | `order` | number | Sort order for launchers. |
 | `trigger` | object | Manual or lifecycle trigger. |
 | `launchers` | array | Where the action appears, such as the top bar. |
+
+## Recommended actions
+
+| Action | Trigger | User-facing purpose |
+| --- | --- | --- |
+| Set up session | Lifecycle | Prepare dependencies and local config after a session is created. |
+| Run | Manual, pinned | Start the app, server, watcher, or local stack. |
+| Build | Manual, pinned | Compile the project before review. |
+| Verify | Manual | Run the check that proves the task is safe to review. |
+| Clean up | Lifecycle | Stop processes or remove generated state before removal. |
 
 ## Triggers
 
@@ -56,5 +72,5 @@ Use lifecycle triggers for setup and cleanup. Use manual triggers for actions a 
 Pinned top-bar actions are visible immediately. Unpinned actions are better for useful but less frequent commands.
 
 <Tip>
-  Keep automation scripts short. If a command becomes complex, call a repository script such as `scripts/check.sh` and document that script in the repo.
+  Keep automation scripts short. If a command becomes complex, call a repository script such as `scripts/check.sh`.
 </Tip>

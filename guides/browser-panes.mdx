@@ -3,37 +3,64 @@ title: "Use browser panes"
 description: "Attach web verification to the right Neroli session."
 ---
 
-Browser panes let you inspect web apps from the same session that owns the code changes. They are useful for visual checks, DOM inspection, and reproducing user flows.
+Browser panes keep web verification attached to the session that owns the code
+changes. That matters because the page, local server, console output, and network
+evidence all need to match the branch you are reviewing.
 
-## Open a page
+<Frame caption="A browser pane connects app state, DOM inspection, and network evidence to one session.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: one session with a web preview, page summary, network evidence, and changed files.
+  </div>
+</Frame>
 
-Use the app UI or the CLI:
+## When to use a browser pane
+
+- A visual change needs inspection.
+- A bug only appears after clicking through a flow.
+- The agent needs to read page state before editing.
+- The review needs evidence beyond "the command passed."
+
+## Recommended flow
+
+<Steps>
+  <Step title="Start the app from the session">
+    Use the repository's Run action or terminal pane so the server belongs to the same branch you are reviewing.
+  </Step>
+
+  <Step title="Open the page in Neroli">
+    Use the app UI for normal review. Agents can use the browser CLI when they need structured page state.
+  </Step>
+
+  <Step title="Inspect before changing">
+    Confirm the page, visible controls, and relevant state before asking an agent to click or edit.
+  </Step>
+
+  <Step title="Capture the final evidence">
+    Keep the final visible state, failure, or network result attached to the session review.
+  </Step>
+</Steps>
+
+## Agent CLI examples
 
 ```sh
 neroli browser open http://localhost:4321 --name website
 neroli browser look --browser website
-```
-
-## Inspect before interacting
-
-```sh
-neroli browser look
-neroli browser state --role button --name-regex Save
-neroli browser read body --max-chars 2000
-```
-
-## Click and verify
-
-```sh
 neroli browser tap "Save"
 neroli browser wait-for-text "Saved"
-neroli browser network --url-pattern /api/ --limit 20
 ```
 
-<Frame caption="A browser pane connects a running app, visible page state, DOM inspection, and network evidence to one session.">
-  <img src="/images/browser-pane.svg" alt="Placeholder diagram showing a browser pane connected to a worktree run command and network log." />
-</Frame>
-
 <Warning>
-  Use the Neroli browser pane for this workspace. Do not attach a separate browser automation surface that cannot see the user's Neroli pane.
+  Agents should use the Neroli browser pane for this workspace. Separate browser tools cannot see the same page the user is reviewing.
 </Warning>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Testing" icon="check-circle" href="/concepts/testing">
+    Choose the right evidence for each session.
+  </Card>
+
+  <Card title="Review and merge" icon="git-pull-request" href="/guides/review-and-merge">
+    Bring browser evidence into the final review.
+  </Card>
+</CardGroup>

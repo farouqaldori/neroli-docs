@@ -1,16 +1,22 @@
 ---
-title: "CLI"
-description: "Common `neroli` command groups."
+title: "Agent CLI bridge"
+description: "How agents and automations inspect the current Neroli context."
 ---
 
-The `neroli` command connects your shell to the active Neroli workspace, session, browser pane, simulator, and automations.
+The `neroli` command is mostly for agents, automations, and advanced debugging.
+It connects a shell process to the active Neroli workspace, session, browser
+pane, simulator, and automation context.
+
+As a user, start in the Mac app. The CLI matters when an agent needs to answer
+questions like "which browser pane belongs to this session?" or "which simulator
+is safe to drive?"
 
 ## Command groups
 
 | Command | Use it for |
 | --- | --- |
 | `neroli identify` | Print the current workspace, session, and surface context. |
-| `neroli state` | List and control known workspace activity. |
+| `neroli state` | List and control known workspace activity, such as dev servers and watchers. |
 | `neroli session` | Inspect session history, provider sessions, and transcripts. |
 | `neroli surface` | List or inspect visible Neroli panes. |
 | `neroli browser` | Drive the attached browser pane. |
@@ -24,11 +30,10 @@ The `neroli` command connects your shell to the active Neroli workspace, session
 ```sh
 neroli identify --json
 neroli state list --json
-neroli session list --all --json
 neroli browser look
 neroli ios-simulator status
 ```
 
 <Info>
-  Most commands operate on the current worktree context. If you are unsure where you are, start with `neroli identify --json`.
+  Most commands operate on the current session. Agents should start with `neroli identify --json` before driving panes or activity.
 </Info>

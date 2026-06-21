@@ -3,29 +3,32 @@ title: "Review and merge"
 description: "Inspect a session's changes before accepting them."
 ---
 
-Review is where Neroli earns its keep. Treat every session output as a proposal until you inspect the diff and verify the behavior.
+Neroli is most useful at review time. Treat every session output as a proposal
+until you inspect the diff and verify the behavior.
 
 <Frame caption="Review brings the session summary, changed files, verification output, and merge decision into one place.">
-  <img src="/images/review-flow.svg" alt="Placeholder diagram showing summary, diff, verification, and merge decision during review." />
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: a review screen with summary, changed files, verification, and merge or archive decision.
+  </div>
 </Frame>
 
 ## Review checklist
 
 <Steps>
   <Step title="Open the diff">
-    Inspect every changed file in the worktree. Look for unrelated edits, generated files, and accidental secrets.
+    Inspect every changed file. Look for unrelated edits, generated files, and accidental secrets.
   </Step>
 
   <Step title="Read the session summary">
-    Compare what the agent says it changed with the actual diff.
+    Compare the plan, commit story, and agent summary with the actual diff.
   </Step>
 
   <Step title="Run verification">
-    Use `Verify`, `Build`, `Run`, browser checks, simulator checks, or a terminal command from the same worktree.
+    Use a saved Verify or Build action, browser checks, simulator checks, or a terminal command from the same session.
   </Step>
 
   <Step title="Decide what to keep">
-    Continue the session, manually edit, commit, open a pull request, merge, or archive the worktree.
+    Continue the session, manually edit, commit, open a pull request, merge, or archive the session.
   </Step>
 </Steps>
 
@@ -35,8 +38,22 @@ Review is where Neroli earns its keep. Treat every session output as a proposal 
 - Local-only files such as `.env`, certificates, or build output.
 - Tests removed instead of fixed.
 - New commands or scripts that are destructive by default.
-- A passed check that was run from a different worktree.
+- A passed check that was run from a different session.
+- Conflict warnings where another session touched the same file or flow.
+- Line attribution, where available, that does not match the intent of the task.
 
 <Tip>
   If two sessions solve the same problem, review both diffs before deciding. The better branch may not be the one that finished first.
 </Tip>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Run agents in parallel" icon="split" href="/concepts/parallel-sessions">
+    Decide when separate sessions are worth the review cost.
+  </Card>
+
+  <Card title="Configure a repository" icon="settings" href="/start/configure-repository">
+    Add repeatable setup, run, build, and verify actions.
+  </Card>
+</CardGroup>

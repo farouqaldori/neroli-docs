@@ -1,12 +1,15 @@
 ---
 title: "Workflow"
-description: "How Neroli turns isolated agent sessions into reviewed code changes."
+description: "How Neroli turns agent work into reviewed code changes."
 ---
 
-Neroli is designed around a simple loop: create an isolated stream of work, give an agent context, observe what happens, verify it, then decide what to keep.
+Neroli is designed around one loop: start focused work, observe the evidence,
+verify the result, and decide what ships.
 
 <Frame caption="The Neroli loop: choose work, run a session, observe panes, verify, review the diff, then merge or archive.">
-  <img src="/images/workflow-loop.svg" alt="Placeholder diagram of the Neroli workflow loop from task to review and archive." />
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: a loop from focused task to session, evidence, verification, review, and merge or archive.
+  </div>
 </Frame>
 
 ## The default loop
@@ -17,7 +20,7 @@ Neroli is designed around a simple loop: create an isolated stream of work, give
   </Step>
 
   <Step title="Create a session">
-    Create a worktree for a task and start the agent provider you want to use.
+    Create a session for one task and choose the agent provider you want to use.
   </Step>
 
   <Step title="Add context">
@@ -29,11 +32,11 @@ Neroli is designed around a simple loop: create an isolated stream of work, give
   </Step>
 
   <Step title="Verify">
-    Run the relevant automation or terminal command from that worktree.
+    Run the relevant action, browser check, simulator check, or terminal command from that session.
   </Step>
 
   <Step title="Review and decide">
-    Inspect the diff. Merge, open a pull request, continue the session, or archive the worktree.
+    Inspect the diff. Merge, open a pull request, continue the session, or archive it.
   </Step>
 </Steps>
 
@@ -41,18 +44,19 @@ Neroli is designed around a simple loop: create an isolated stream of work, give
 
 <Tabs>
   <Tab title="Local">
-    Local sessions run on your Mac, in a worktree under Neroli's app-support directory. This is the normal path for quick work, UI inspection, and commands that depend on local tools.
+    Local sessions run on your Mac. Use them for quick work, UI inspection, and local tools.
   </Tab>
 
   <Tab title="Cloud">
-    Cloud handoff is for supported sessions that should keep running away from your Mac. Neroli transfers workspace state, restores panes where possible, and syncs the result back when you move the session local again.
+    Cloud handoff is for supported sessions that should keep running away from your Mac. Neroli syncs the result back for local review.
   </Tab>
 </Tabs>
 
 ## What to watch
 
-- **Terminal output:** build, test, and agent command logs.
-- **Changed files:** the actual Git diff for the worktree.
+- **Plan:** the intended path before the agent writes too much code.
+- **Terminal output:** build, test, and agent logs.
+- **Changed files:** the actual Git diff for the session branch.
 - **Panes:** browser, simulator, and other surfaces attached to the session.
 - **Status:** whether the session is running, waiting, failed, or ready for review.
 

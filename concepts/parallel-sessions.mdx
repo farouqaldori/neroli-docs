@@ -1,40 +1,60 @@
 ---
 title: "Parallel sessions"
-description: "Choose when to use one session, several sessions, or several worktrees."
+description: "Choose when to keep work together and when to split it into separate sessions."
 ---
 
-Parallel agent work is useful when each stream can be reviewed independently. Neroli gives each stream its own worktree so you can compare, continue, merge, or discard without mixing state.
+Parallel sessions are useful when each stream can be reviewed independently.
+Neroli gives each stream its own lane so you can compare, continue, merge, or
+discard without mixing state.
+
+The important decision is simple: should this work share one branch, or should
+it move independently?
+
+<Frame caption="Split independent tasks. Keep shared implementation, review, or test repair in one session.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: one branch with cooperating agents beside three separate lanes for independent work.
+  </div>
+</Frame>
 
 ## Choose the right shape
 
 | Use this | When |
 | --- | --- |
 | One session | The task is small and one agent can finish it end to end. |
-| Multiple sessions in one worktree | Agents should share one branch, such as implement plus review or fix plus test. |
-| Multiple worktrees | Tasks should move independently or become separate pull requests. |
-| Competing worktrees | You want to compare different approaches to the same problem. |
-
-<Frame caption="Independent tasks belong in separate worktrees. Shared review or test help can happen inside one worktree.">
-  <img src="/images/parallel-sessions.svg" alt="Placeholder diagram comparing one worktree with two sessions against two separate worktrees." />
-</Frame>
+| Multiple agents in one session | The work should share one branch, such as implement plus review or fix plus test. |
+| Multiple sessions | Tasks should move independently or become separate pull requests. |
+| Competing sessions | You want to compare different approaches to the same problem. |
 
 ## Good parallel tasks
 
-- One agent updates documentation while another fixes a UI bug.
-- One agent implements a feature while another explores a refactor in a separate branch.
-- One agent writes tests for a known behavior while another works on the implementation.
-- Two agents try different designs for the same problem in separate worktrees.
+- One session updates documentation while another fixes a UI bug.
+- One session implements a feature while another explores a refactor.
+- One session writes tests for known behavior while another works on implementation.
+- Two sessions try different designs for the same problem.
 
 ## Poor parallel tasks
 
-- Two agents editing the same files in different worktrees when you already know both changes must merge together.
+- Two sessions editing the same files when you already know both changes must merge together.
 - A broad prompt like "clean up the app" with no boundaries.
 - Work that depends on shared local state that cannot run in separate directories.
 
 ## Review parallel work
 
-Review each branch on its own first. Then decide whether to merge one, merge several in sequence, or combine work manually.
+Review each branch on its own first. Then decide whether to merge one, merge
+several in sequence, or combine work manually.
 
 <Warning>
   Parallel work increases review load. Use it when independence is real, not just because more agents are available.
 </Warning>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Configure a repository" icon="settings" href="/start/configure-repository">
+    Make each session easy to set up, run, and verify.
+  </Card>
+
+  <Card title="Review and merge" icon="git-pull-request" href="/guides/review-and-merge">
+    Keep review quality high as the number of sessions grows.
+  </Card>
+</CardGroup>

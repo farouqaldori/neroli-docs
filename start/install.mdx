@@ -1,26 +1,33 @@
 ---
-title: "Install"
-description: "Get Neroli running on your Mac."
+title: "Install Neroli"
+description: "Get the Mac app ready for your first AI coding session."
 ---
 
-Neroli is a macOS app for local and cloud-assisted agent work. Install the app, then make sure the command-line tools you plan to use are available in your terminal environment.
+Neroli is a Mac app first. Install it, connect the agent tools you already use,
+then open a repository and start with one small task.
 
-## Requirements
+<Frame caption="Setup is simple: install the Mac app, connect your agent provider, open a repo, then start a focused session.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: onboarding checks for app installed, provider connected, repository opened, and first session ready.
+  </div>
+</Frame>
+
+## What you need
 
 - macOS 15.6 or later.
-- Git installed and available in your shell.
-- At least one supported agent provider, such as Claude Code or Codex.
-- GitHub CLI authentication if you want GitHub-backed workflows.
+- A Git repository on your Mac.
+- At least one supported coding agent, such as Claude Code or Codex.
+- GitHub authentication if your workflow includes pull requests or GitHub-backed actions.
 
-<Frame caption="The install path is short: install the app, connect the tools you use, then open a repository.">
-  <img src="/images/install-checks.svg" alt="Placeholder diagram showing app install, provider login, GitHub login, and repository selection." />
-</Frame>
+<Note>
+  You do not need every provider on day one. Start with the agent you trust, then add more when parallel work is useful.
+</Note>
 
 ## Install the app
 
 <Steps>
   <Step title="Download Neroli">
-    Download the latest Neroli build from the website or your team distribution channel.
+    Get the latest Neroli build from the website or your team distribution channel.
   </Step>
 
   <Step title="Move it to Applications">
@@ -28,13 +35,21 @@ Neroli is a macOS app for local and cloud-assisted agent work. Install the app, 
   </Step>
 
   <Step title="Open Neroli">
-    Launch Neroli. macOS may ask you to confirm that you want to open the app.
+    Launch the app and approve the macOS prompts needed for your workflow.
+  </Step>
+
+  <Step title="Open a repository">
+    Choose a local Git repository. Neroli turns it into a workspace for sessions, branches, panes, and review state.
   </Step>
 </Steps>
 
-## Check provider access
+## Connect your agent
 
-Run the commands for the tools you plan to use:
+Neroli coordinates the agent tools installed on your Mac or configured for your
+account. If a provider is not available inside Neroli, sign in to that provider
+from your normal terminal, then restart or create a new session.
+
+Common checks:
 
 ```sh
 git --version
@@ -43,20 +58,13 @@ claude /login
 codex login
 ```
 
-<Note>
-  You do not need every provider. Start with the one you already use, then add more later from settings or your shell.
-</Note>
+## What the CLI is for
 
-## Install the CLI
-
-Neroli includes a `neroli` command for browser panes, simulator control, automations, session inspection, and workspace activity.
-
-```sh
-neroli --help
-```
-
-If the command is not available, open Neroli and use the app's CLI install flow.
+Neroli also installs a `neroli` command, but most users do not start there. The
+CLI is mainly for agents, repo actions, and advanced debugging. It lets a
+session inspect the correct browser pane, simulator, session path, and action
+state without guessing from the outside.
 
 ## Next step
 
-Create [your first session](/start/first-session).
+Start [your first session](/start/first-session).

@@ -1,38 +1,42 @@
 ---
 title: "Cloud handoff"
-description: "Understand local-to-cloud and cloud-to-local session movement."
+description: "Know when a supported session should move between local and cloud."
 ---
 
-Neroli can move supported sessions between local and cloud runtime when cloud is configured. The goal is continuity: keep work moving while preserving enough state to review and resume.
+Neroli is local-first. Cloud handoff is for the moments when a supported session
+should keep running away from your Mac and come back with enough state to review.
 
-<Frame caption="Cloud handoff moves workspace state and agent context between a local worktree and a cloud runtime, then syncs reviewed changes back.">
-  <img src="/images/cloud-handoff.svg" alt="Placeholder diagram showing a local Neroli session moving to cloud and back to local review." />
+<Frame caption="Cloud handoff moves a supported session to cloud, then brings the result back for review.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: a local session moves to cloud, continues work, then returns to local review before merge.
+  </div>
 </Frame>
 
-## What moves
+## Use cloud handoff when
 
-- Workspace file changes.
-- Session and pane metadata where supported.
-- Agent state checkpoints for supported providers.
-- Lifecycle status so the app can show whether the session is local, cloud, synced, or needs attention.
+- A longer supported task should keep running while your Mac is unavailable.
+- The work does not depend on local-only devices, files, or manual intervention.
+- You are comfortable reviewing the returned diff before merging.
 
-## What does not change
+## Stay local when
+
+- The task needs a local simulator, device, browser flow, or private file.
+- You expect to intervene every few minutes.
+- The repository depends on secrets or local state that should not move.
+
+## What stays true
 
 - You still review the resulting diff before merging.
-- Git metadata and checkpoint internals should not appear as user changes.
-- Local secrets should not be committed or treated as portable project state.
-
-## When to use cloud
-
-Use cloud handoff when a supported session should continue running away from your Mac or when a longer task benefits from a managed runtime.
-
-Stay local when the task needs:
-
-- Local-only devices.
-- Local private files.
-- Fast UI iteration with browser or simulator panes.
-- Manual intervention every few minutes.
+- Local secrets should not be committed or treated as portable state.
+- Status in the app should tell you whether the session is local, cloud, synced, or needs attention.
+- Handoff support depends on your account, provider, and runtime configuration.
 
 <Warning>
-  Cloud support depends on account, provider, and runtime configuration. If a handoff fails, review the status message and retry only after the reported issue is fixed.
+  Cloud support depends on account, provider, and runtime configuration. If a handoff fails, fix the visible issue before retrying.
 </Warning>
+
+## Next step
+
+<Card title="Privacy" icon="shield" href="/security/privacy">
+  Understand what to consider before moving session context to providers or cloud runtime.
+</Card>

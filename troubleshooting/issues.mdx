@@ -1,7 +1,10 @@
 ---
 title: "Troubleshooting issues"
-description: "Fix common setup, worktree, provider, and verification problems."
+description: "Fix common setup, provider, branch, and verification problems."
 ---
+
+Start with the session that owns the problem. Most confusing failures come from
+checking the wrong branch, server, browser pane, or simulator.
 
 ## A provider is unavailable
 
@@ -12,11 +15,11 @@ claude /login
 codex login
 ```
 
-Then restart the session or open a new terminal from the same worktree.
+Then restart the session or open a new terminal from the same session.
 
 ## Git status looks wrong
 
-Confirm the worktree path and branch:
+Confirm the session path and branch:
 
 ```sh
 pwd
@@ -24,11 +27,11 @@ git status
 git worktree list
 ```
 
-If you are in the main checkout, switch to the session's worktree before running checks.
+If you are in the main checkout, switch to the session path before running checks.
 
-## Automation fails
+## A repo action fails
 
-Run the script manually from the worktree:
+Run the script manually from the session path:
 
 ```sh
 cd "$NEROLI_WORKTREE_PATH"
@@ -39,12 +42,14 @@ Look for assumptions about absolute paths, missing dependencies, or interactive 
 
 ## Browser pane shows stale content
 
-Restart the project run command, then reload the browser pane. If the page is cached at the edge, test with a no-cache request or clear the relevant cache.
+Restart the project run command, then reload the browser pane. If the page is
+cached at the edge, test with a no-cache request or clear the relevant cache.
 
 ## Cloud handoff fails
 
-Read the visible status message first. Common causes include expired auth, missing runtime capacity, unsupported provider state, or workspace hydration failure.
+Read the visible status message first. Common causes include expired auth,
+missing runtime capacity, unsupported provider state, or workspace hydration failure.
 
 <Tip>
-  The fastest useful bug report includes the worktree branch, the failing command, the visible error, and whether the same command works outside Neroli.
+  The fastest useful bug report includes the session branch, failing command, visible error, and whether the same command works outside Neroli.
 </Tip>

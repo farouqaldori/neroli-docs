@@ -1,24 +1,31 @@
 ---
 title: "Privacy"
-description: "What to consider before sending repository context to agents or cloud runtime."
+description: "How to think about code, prompts, providers, and cloud handoff."
 ---
 
-Neroli helps you route work to local and cloud tools. The data a provider sees depends on the provider, the prompt, attached files, terminal commands, and whether cloud handoff is enabled.
+Neroli is local-first: your repositories are opened from your Mac, and review
+happens before you merge. The data a provider sees depends on the provider, the
+prompt, attached files, terminal commands, and whether you intentionally use
+cloud handoff.
 
 ## Local providers
 
-Local provider CLIs may still send prompts, files, and command context to their own services. Check the provider's policy and your account settings.
+Local provider CLIs may still send prompts, files, and command context to their
+own services. Check the provider's policy and your account settings before
+including sensitive material.
 
 ## Cloud handoff
 
-When cloud handoff is used, Neroli transfers workspace state needed to continue the session. Do not move work to cloud if it depends on secrets or files that should stay local.
+When cloud handoff is used, Neroli transfers the state needed to continue the
+session. Do not move work to cloud if it depends on secrets or files that should
+stay local.
 
 ## Good habits
 
 - Attach the smallest context that solves the task.
 - Keep secrets out of prompts and committed files.
 - Review diffs for accidental local files.
-- Use separate worktrees for sensitive experiments.
+- Use separate sessions for sensitive experiments.
 
 <Info>
   This page is operational guidance, not a legal privacy policy.

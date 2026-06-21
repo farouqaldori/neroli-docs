@@ -1,62 +1,91 @@
 ---
-title: "Your first session"
-description: "Open a repository, create an isolated worktree, start an agent, and review the result."
+title: "Run your first session"
+description: "Start with one focused task and learn the review loop."
 ---
 
-A session is one agent run inside one worktree. The worktree gives the agent a separate branch and directory so its changes do not collide with your main checkout.
+Your first Neroli session should feel small and controlled. Pick one task where
+you can tell whether the result is right: a visible bug, a failing check, a
+small feature, a test, or a documentation change.
 
-<Info>
-  Worktree isolation keeps development state separate. It does not change macOS permissions for local commands.
-</Info>
+Neroli will give that task its own branch, keep the agent's panes attached to
+the work, and bring you back to a review decision instead of leaving you with a
+messy checkout.
+
+<Frame caption="The first successful loop is not about speed. It is about seeing what the agent did and deciding whether to trust it.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: one session moving from prompt to progress, verification, diff review, and merge or archive.
+  </div>
+</Frame>
+
+## Pick a reviewable task
+
+Good first tasks:
+
+- Fix one visible UI issue.
+- Add one focused test.
+- Update one documentation page.
+- Reproduce one reported bug.
+- Try one implementation approach.
+
+Avoid broad prompts like "clean up the app" or "improve the frontend." Those
+are projects, not reviewable sessions.
 
 ## The first loop
 
 <Steps>
-  <Step title="Open a repository">
-    Choose a local Git repository in Neroli. The repository becomes the workspace that holds your sessions and worktrees.
+  <Step title="Open the repo">
+    Select the Git repository in Neroli. This becomes the workspace for your sessions.
   </Step>
 
-  <Step title="Create a worktree">
-    Start a new session from the repository. Neroli creates or attaches an isolated Git worktree for the task.
+  <Step title="Start a new session">
+    Create a session for the task. Neroli keeps it from colliding with your main checkout or other sessions.
   </Step>
 
-  <Step title="Describe the task">
-    Tell the agent what you want. Add relevant files, screenshots, logs, or notes when the task needs context.
+  <Step title="Give the agent a clear job">
+    Say what should change, where to look first, and what should stay untouched.
   </Step>
 
-  <Step title="Run the project">
-    Use a pinned automation such as `Run`, or open a terminal pane in the worktree. Commands run from the session's directory.
+  <Step title="Watch for evidence">
+    Use the session view to follow the plan, progress, output, changed files, and attached panes.
   </Step>
 
-  <Step title="Review changes">
-    Open the diff and terminal output. Run checks before you merge, cherry-pick, or discard work.
+  <Step title="Review the proposal">
+    When the session finishes, inspect the diff and verification before you merge, continue, or archive it.
   </Step>
 </Steps>
 
-<Frame caption="A first session usually moves left to right: repository, isolated worktree, agent prompt, visible output, review.">
-  <img src="/images/first-session-flow.svg" alt="Placeholder diagram showing the first Neroli session flow from repository to review." />
-</Frame>
-
-## Give the agent useful context
-
-Good session prompts are specific and bounded:
-
-- Name the files, feature, bug, or user flow.
-- Say what should not change.
-- Include failing commands or logs when available.
-- Ask for verification steps in the same worktree.
+## A good first prompt
 
 ```txt
 Fix the empty-state layout in the sidebar.
 
 Use the existing design tokens. Do not change backend code.
-After the fix, run the website or app check that covers this area.
+After the fix, run the check that covers this area and summarize what changed.
 ```
 
-## Know when to split work
+Add context when it helps:
 
-Use one session when the task is one coherent branch. Use multiple sessions when you want separate reviews or competing approaches.
+- A screenshot of the broken state.
+- The route, screen, or command that reproduces the issue.
+- Files the agent should inspect first.
+- Constraints such as "do not change the API" or "keep the existing design system."
 
-<Card title="Parallel sessions" icon="split" href="/concepts/parallel-sessions">
-  Learn how to decide between one worktree, multiple sessions, and multiple worktrees.
-</Card>
+## What to trust
+
+Trust the evidence, not the completion message:
+
+- The diff matches the task.
+- The plan or summary matches the actual changes.
+- The commit story explains the user-facing change instead of hiding behind a wall of diff.
+- The app, test, browser flow, or simulator state was verified from this session.
+- No unrelated files, local secrets, or generated noise were included.
+
+<CardGroup cols={2}>
+  <Card title="Review and merge" icon="git-pull-request" href="/guides/review-and-merge">
+    Turn a finished session into a confident decision.
+  </Card>
+
+  <Card title="Run agents in parallel" icon="split" href="/concepts/parallel-sessions">
+    Learn when it is worth starting more than one session.
+  </Card>
+</CardGroup>
