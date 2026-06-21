@@ -1,0 +1,86 @@
+---
+title: "Concepts"
+description: "The mental model behind Neroli workspaces, sessions, panes, automations, and cloud."
+---
+
+Neroli feels simple when you treat **the session** as the unit of work.
+
+A session is not just a terminal tab. It is an isolated worktree, provider TUI,
+panes, status, automations, review state, and optional cloud handoff moving
+together.
+
+<Frame caption="A session keeps the agent, files, panes, automations, status, and review evidence together.">
+  <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+    Placeholder image: one Neroli session containing a provider TUI, browser pane, run automation, changed files, and review status.
+  </div>
+</Frame>
+
+## Workspace, session, worktree
+
+| Term | What it means |
+| --- | --- |
+| Workspace | A repository opened in Neroli. |
+| Session | One agent run with its own branch, panes, status, and automations. |
+| Worktree | The Git isolation boundary that keeps a session's files separate. |
+| Provider | The coding agent you choose for the session. |
+
+This is what lets you run multiple agents without losing track of which files,
+commands, browser, or review belong to which job.
+
+## Why direct TUIs matter
+
+Neroli launches the real provider interfaces directly. That keeps the app fast
+and avoids a stale wrapper around your agents.
+
+You still get the provider's native behavior, shortcuts, auth, model features,
+and release-day updates. Neroli adds the workspace layer around it: isolation,
+visibility, automations, panes, review, and cloud handoff.
+
+## Session panes
+
+Panes keep useful context attached to the work instead of scattered across your
+desktop.
+
+| Pane | Use it for |
+| --- | --- |
+| Provider TUI | Talk to the provider you chose for the session. |
+| Terminal | Run commands inside the session worktree. |
+| Browser | Inspect the app, test flows, capture evidence, and let agents verify UI work. |
+| Simulator | Work with the session's dedicated iOS simulator. |
+| Preview | Inspect generated previews and local app surfaces. |
+| Diff viewer | Review changed files from the session. |
+| File viewer | Open generated artifacts, markdown, images, PDFs, and text outputs. |
+
+<Info>
+  Cloud sessions can keep terminal, browser, diff, and file panes. Simulator and preview panes are local-only because they depend on your Mac.
+</Info>
+
+## Status is part of the product
+
+Neroli tracks whether a session is running, waiting for input, asking for
+approval, blocked, failed, ready for review, local, or cloud. The point is not
+to watch every token. The point is to know which session needs attention.
+
+## The useful habit
+
+When you start a job, think in this order:
+
+<Steps>
+  <Step title="Pick the session">
+    Start fresh for new work, or continue an existing session when the context already lives there.
+  </Step>
+
+  <Step title="Attach the right panes">
+    Add the browser, terminal, simulator, diff, or file viewer that makes the work visible.
+  </Step>
+
+  <Step title="Use automations">
+    Run the workspace's setup, run, build, verify, and stop actions from the session.
+  </Step>
+
+  <Step title="Review before merging">
+    Ask the agent to self-review, inspect the result, then decide what lands.
+  </Step>
+</Steps>
+
+Next: turn the model into repeatable workflows with [Automations](/automations).

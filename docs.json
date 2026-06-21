@@ -11,13 +11,25 @@
   "navigation": {
     "groups": [
       {
-        "group": "Neroli",
+        "group": "Start",
         "pages": [
           "index",
           "start",
+          "concepts"
+        ]
+      },
+      {
+        "group": "Workflows",
+        "pages": [
           "automations",
           "cloud",
           "review",
+          "recipes"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
           "reference"
         ]
       }

@@ -1,0 +1,123 @@
+---
+title: "Recipes and gotchas"
+description: "High-leverage Neroli workflows, plus the things that usually trip people up."
+---
+
+These are the workflows that make Neroli feel different from a pile of terminal
+tabs. Start with one or two. Add more when a repeated task slows you down.
+
+## Isolated dev sessions
+
+Use this when parallel agents need to run the app, database, or test stack at
+the same time.
+
+<Steps>
+  <Step title="Prepare the session">
+    Copy `.env.local` or generated config into the session without committing secrets.
+  </Step>
+
+  <Step title="Assign unique ports">
+    Give each session its own frontend, backend, database, queue, or simulator ports.
+  </Step>
+
+  <Step title="Isolate services">
+    Use a unique Docker project name, database name, schema, cache prefix, or local data directory for each session.
+  </Step>
+
+  <Step title="Expose Run and Stop">
+    Pin Run in the toolbar and add Stop behavior so the session can clean up after itself.
+  </Step>
+
+  <Step title="Add Verify">
+    Give humans and agents one command that proves the session is ready for review.
+  </Step>
+</Steps>
+
+```txt
+Create Neroli automations for isolated dev sessions.
+
+Prepare should copy env files safely, assign unique ports, and create isolated
+Docker/database state. Run should start the app from this session. Stop should
+tear it down. Verify should run the checks we use before review.
+```
+
+## Parallel feature work
+
+Use this when you want several directions explored without mixing files.
+
+1. Start one session per feature, fix, experiment, docs update, or review.
+2. Give each session the context and outcome it needs.
+3. Let sessions run in parallel while Neroli tracks which ones need input.
+4. Ask each agent to self-review before you compare results.
+5. Merge one, merge several in sequence, continue the best one, or archive the rest.
+
+<Tip>
+  The point is not to make every task tiny. The point is to keep each stream of work inspectable.
+</Tip>
+
+## Cloud handoff
+
+Use this when a session should keep running away from your Mac, or when you want
+more agents moving at once.
+
+<Steps>
+  <Step title="Start local">
+    Get the session into a useful state locally first. The handoff snapshot includes conversation context, file edits, and workspace state.
+  </Step>
+
+  <Step title="Check setup">
+    Make sure the workspace knows how to install, build, run, and verify itself without hidden local state.
+  </Step>
+
+  <Step title="Move to cloud">
+    Send the session to cloud and keep watching status in Neroli.
+  </Step>
+
+  <Step title="Bring it back">
+    Move the result local, run verification from the session, and review before merging.
+  </Step>
+</Steps>
+
+<Warning>
+  Cloud is not a place to hide messy setup. If setup, secrets, or network access are unclear locally, fix that before relying on handoff.
+</Warning>
+
+## Agent self-review
+
+Use this before you read the diff yourself.
+
+```txt
+Review your own work before I merge it.
+
+Summarize what changed, inspect the diff for unrelated edits or risky files,
+run the relevant checks from this session, fix anything obvious, and tell me
+what still needs my attention.
+```
+
+Good self-review includes the changed behavior, verification result, known
+risks, and any files you should inspect manually.
+
+## Gotchas
+
+| Gotcha | What to do |
+| --- | --- |
+| Ports collide across sessions | Assign ports in Prepare instead of hardcoding them. |
+| A command ran from the wrong repo | Run it from the session pane or session automation. |
+| Verify passes outside Neroli but fails inside | Compare env, paths, generated files, and session setup. |
+| Browser looks stale | Restart the session's Run action and reload the attached browser pane. |
+| Cloud fails during handoff | Read the recovery message, then fix setup, auth, network access, or pending sync. |
+| Simulator or preview missing in cloud | Keep that work local; those panes depend on your Mac. |
+| Generated files are noisy | Keep build outputs ignored unless they are real review artifacts. |
+| Two sessions edit the same area | Review them in sequence and merge deliberately. |
+| Provider auth is missing | Sign in to the provider locally, then start a new session. |
+| Secrets appear in a diff | Stop and remove them before review. Automations should copy secrets, not commit them. |
+
+## When to add an automation
+
+Add one when you repeat a task more than twice, when agents keep asking how to
+run something, or when a setup mistake blocks parallel work.
+
+Good automation names are clear and obvious: Prepare session, Run dev, Stop,
+Build, Verify, Improve automations, Update docs.
+
+Next: see the agent-facing details in [Agent details](/reference).
