@@ -5,10 +5,13 @@ description: "Teach your workspace how to run itself."
 
 Automations are how your workspace learns to operate itself.
 
-They can be scripts, like copying env files or starting Docker. They can also be
-agentic sessions, like an agent that reviews recent Neroli runs and suggests
+They can be scripts, like copying env files or starting Docker. They can also
+launch agents, like a session that reviews recent Neroli runs and suggests
 better automations. Claude, Codex, OpenCode, and other agents can create or
-update these automations from inside Neroli.
+update automations from inside Neroli.
+
+Agents launched inside Neroli know about the current session, visible panes, and
+available automations, so they can use the same workspace controls you do.
 
 <Frame caption="Automations can be toolbar buttons, lifecycle hooks, scheduled agent sessions, or cleanup scripts with stop behavior.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
@@ -23,16 +26,16 @@ update these automations from inside Neroli.
 | Script automation | Runs deterministic shell work in the current session. | Copy `.env.local`, assign ports, start Docker, run Build, stop services. |
 | Agentic automation | Starts an isolated agent session with a job. | Review recent sessions, improve automations, update docs from shipped features. |
 
-Both are workspace-native. They can appear as toolbar buttons, run when a session
-is created, run when a session moves to review, run on a schedule, or clean up
-when a service stops.
+Both are workspace-native. They can show up in the top bar, command palette,
+sidebar, or session menu. They can also run on a schedule or when a session is
+created, moved, archived, or removed.
 
 ## Automations worth creating
 
 | Automation | Why it is useful |
 | --- | --- |
 | Prepare session | Copies env files, installs deps, assigns unique ports, and creates isolated Docker or database state. |
-| Run dev | Starts the dev server or stack from the current session, usually as a pinned toolbar button. |
+| Run dev | Starts the dev server or stack from the current session, often as a pinned toolbar button. |
 | Stop / teardown | Stops the dev server, shuts down Docker, frees ports, and removes generated state. |
 | Build / Verify | Gives humans and agents the same one-click checks before work lands. |
 | Improve my automations | Agentic automation that inspects recent sessions and proposes easier setup/run/verify flows. |
@@ -41,7 +44,7 @@ when a service stops.
 
 ## The isolated dev environment pattern
 
-The highest-leverage automation is usually **Prepare session**.
+The most useful automation is often **Prepare session**.
 
 <Steps>
   <Step title="Copy local config">
@@ -82,5 +85,5 @@ It can inspect package scripts, Docker config, previous commands, and failed
 sessions, then create automations that make the next session smoother.
 
 <Tip>
-  The best automations make a new isolated session feel like your main dev environment, without sharing its state.
+  Shared automations can live with the repo. Personal automations can stay local to your machine.
 </Tip>

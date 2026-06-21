@@ -3,9 +3,8 @@ title: "Start"
 description: "Open Neroli and get into the agent flow quickly."
 ---
 
-Neroli should feel immediate: open the app, pick a repo, choose your agent, and
-keep moving. Claude, Codex, OpenCode, or another provider can all fit the same
-workspace.
+Open the app, pick a repo, choose your agent, and keep moving. Claude, Codex,
+OpenCode, or another provider can all fit the same workspace.
 
 <Frame caption="The first-run flow is repo, provider, session, panes, and work in motion.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
@@ -42,7 +41,7 @@ provider TUI directly inside the UI.
   </Step>
 
   <Step title="Add panes as needed">
-    Attach terminal, browser, simulator, logs, and diffs to the session instead of juggling separate windows.
+    Attach terminals, browsers, simulator, diffs, file viewers, and generated artifacts to the session instead of juggling separate windows.
   </Step>
 
   <Step title="Run more sessions">
@@ -50,7 +49,11 @@ provider TUI directly inside the UI.
   </Step>
 </Steps>
 
-## A prompt can be simple
+Neroli keeps attention visible as work runs. You can see which sessions are
+running, which ones need approval or input, which checks failed, and which work
+is ready to review.
+
+## A simple prompt
 
 ```txt
 Implement the new billing banner.
@@ -62,7 +65,7 @@ the session organized while the agent works.
 
 ## Make the workspace better
 
-Manual launch is enough for day one. Once a repo becomes a real workspace, add
+Manual launch is enough for day one. Once a repo becomes a workspace, add
 automations that prepare sessions, copy env files, assign ports, run dev
 servers, stop stacks, verify changes, and launch agentic helpers.
 

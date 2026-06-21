@@ -9,7 +9,7 @@ Neroli captures the current session, including conversation context, file edits,
 workspace state, and the information needed to recreate it in a cloud runtime.
 The session can keep going there, then come back local when you want it.
 
-<Frame caption="A session can move local to cloud, keep working, then move cloud to local without tying the work to one provider.">
+<Frame caption="Cloud changes the location of a session. The workspace, panes, conversations, and changed files remain the product object.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
     Placeholder image: a session snapshot carrying conversation, edits, workspace state, panes, and provider context from Local to Cloud and back.
   </div>
@@ -23,7 +23,7 @@ means you can:
 - start locally and move a supported session to cloud
 - run many remote sessions in parallel
 - bring cloud work back to your Mac
-- keep using Claude, Codex, OpenCode, or other supported providers without locking the work to one place
+- keep using supported providers without locking the work to one place
 - stay local-first by default and use cloud as the accelerator
 
 ## What moves
@@ -33,14 +33,16 @@ Neroli handoff is designed around continuity:
 - conversation context
 - current file edits
 - workspace and branch state
-- provider/session metadata where supported
+- provider/session metadata for supported panes
 - enough environment context to resume the work
 - status and recovery information if the move needs attention
 
+If something cannot move cleanly, Neroli surfaces that before you end up in the
+wrong session or a blank provider pane.
+
 ## Make cloud sessions usable
 
-Cloud needs the same thing every clean machine needs: setup, environment, and
-network rules.
+Cloud needs setup, environment, and network access.
 
 <Steps>
   <Step title="Describe setup">

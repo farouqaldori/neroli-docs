@@ -11,14 +11,15 @@ advanced debugging.
 | Thing | Why it exists |
 | --- | --- |
 | Worktree | Keeps files and branch state separate from other sessions. |
-| Panes | Keeps terminal, browser, simulator, logs, and review evidence with the task. |
+| Panes | Keeps terminals, browser, simulator, previews, diffs, files, and review evidence with the task. |
 | Actions | Runs setup, run, build, verify, and cleanup from the right session. |
 | Status | Shows whether work is planning, running, in review, merging, done, local, cloud, or needs attention. |
 
 ## Agent CLI bridge
 
 The `neroli` CLI is mainly for agents and automations. It lets them inspect the
-current session instead of guessing.
+current session instead of guessing paths, panes, browsers, simulators, or
+automation names.
 
 ```sh
 neroli identify --json
@@ -37,6 +38,9 @@ Common groups:
 | `neroli ios-simulator` | Use the simulator owned by this workspace. |
 | `neroli automations` | Inspect or manage saved automations. |
 | `neroli automation-run` | Report outcomes from an automation run. |
+
+This is why agents can create automations, inspect recent sessions, use attached
+browsers, and keep work tied to the right workspace.
 
 ## Safety rules
 

@@ -6,8 +6,8 @@ description: "Let the agent review its work, then choose what lands."
 Neroli lets you run a lot of work at once. Review is where that work turns into
 a decision.
 
-The normal flow is not to read every line cold. Ask the agent to review its own
-work first: explain the change, check the diff, run the right automations, fix
+You do not have to read every line cold. Ask the agent to review its own work
+first: explain the change, check the diff, run the right automations, fix
 anything obvious, and leave you with a clean summary. Then you decide what lands.
 
 <Frame caption="Review starts with an agent self-review, then ends with your decision: continue, merge, open a pull request, or archive.">
@@ -19,6 +19,10 @@ anything obvious, and leave you with a clean summary. Then you decide what lands
 ## One session
 
 <Steps>
+  <Step title="Steer before implementation">
+    When an agent asks for plan review, command approval, or user input, answer inside the session so the context stays with the work.
+  </Step>
+
   <Step title="Ask for self-review">
     Have the agent review its own branch before you do. It should summarize the change, list risks, inspect the diff, and run the workspace checks.
   </Step>
@@ -28,7 +32,7 @@ anything obvious, and leave you with a clean summary. Then you decide what lands
   </Step>
 
   <Step title="Read the result">
-    Start from the agent's review summary, then inspect the files that matter: product code, tests, migrations, scripts, config, and docs.
+    Start from the agent's review summary, then inspect the files that matter: product code, tests, migrations, scripts, config, docs, and generated artifacts.
   </Step>
 
   <Step title="Verify from the session">
@@ -74,7 +78,6 @@ session, or combine work manually when that is the right call.
 - verification ran from another session
 - cloud returned changes that were not checked locally
 - conflict warnings show another session touched the same file or flow
-- line attribution, where available, does not match the task intent
 
 <Warning>
   Agent self-review is a filter, not a rubber stamp. Keep the parts you want.
