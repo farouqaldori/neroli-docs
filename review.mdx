@@ -1,30 +1,38 @@
 ---
 title: "Review"
-description: "See what changed and choose what lands."
+description: "Let the agent review its work, then choose what lands."
 ---
 
-Neroli lets you run a lot of work at once. Review is where you decide what lands
-back in the main branch.
+Neroli lets you run a lot of work at once. Review is where that work turns into
+a decision.
 
-<Frame caption="Review combines the plan, commit story, diff, verification, panes, conflicts, and final merge decision.">
+The normal flow is not to read every line cold. Ask the agent to review its own
+work first: explain the change, check the diff, run the right automations, fix
+anything obvious, and leave you with a clean summary. Then you decide what lands.
+
+<Frame caption="Review starts with an agent self-review, then ends with your decision: continue, merge, open a pull request, or archive.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
-    Placeholder image: a review screen showing plan, commit story, changed files, verification result, browser evidence, and Merge or Archive.
+    Placeholder image: a review screen showing an agent self-review summary, changed files, verification result, browser evidence, and Merge or Archive.
   </div>
 </Frame>
 
 ## One session
 
 <Steps>
-  <Step title="Scan the story">
-    Start with the plain-language summary of what changed and why.
+  <Step title="Ask for self-review">
+    Have the agent review its own branch before you do. It should summarize the change, list risks, inspect the diff, and run the workspace checks.
   </Step>
 
-  <Step title="Inspect the diff">
-    Look for unrelated files, generated noise, secret files, dependency changes, and scripts you did not ask for.
+  <Step title="Let it clean up">
+    If the agent finds obvious mistakes, missing tests, formatting issues, or docs gaps, let it fix them in the same session.
   </Step>
 
-  <Step title="Run the workspace checks">
-    Use the same Build, Verify, browser, simulator, or terminal automations the workspace exposes.
+  <Step title="Read the result">
+    Start from the agent's review summary, then inspect the files that matter: product code, tests, migrations, scripts, config, and docs.
+  </Step>
+
+  <Step title="Verify from the session">
+    Use the same Build, Verify, browser, simulator, or terminal automations attached to that session.
   </Step>
 
   <Step title="Decide">
@@ -32,10 +40,20 @@ back in the main branch.
   </Step>
 </Steps>
 
+## A useful review prompt
+
+```txt
+Review your own work before I merge it.
+
+Summarize what changed, inspect the diff for unrelated edits or risky files,
+run the relevant checks, fix anything obvious, and tell me what still needs my
+attention.
+```
+
 ## Many sessions
 
 Parallel sessions are where Neroli opens up. You can let several agents explore,
-then pick the work that should continue.
+then ask each one to review itself before you compare the results.
 
 Common patterns:
 
@@ -44,11 +62,13 @@ Common patterns:
 - one agent writes tests while another changes the product
 - one cloud session keeps working while you continue locally
 
-Review each branch on its own first. Then merge one, merge several in sequence,
-or combine work manually when that is the right call.
+Ask each branch for a self-review first. Then compare the summaries, diffs, and
+verification results. Merge one, merge several in sequence, continue the best
+session, or combine work manually when that is the right call.
 
 ## Red flags
 
+- the self-review is vague or skips the risky parts
 - the diff is larger than expected
 - tests were deleted instead of fixed
 - verification ran from another session
@@ -57,5 +77,5 @@ or combine work manually when that is the right call.
 - line attribution, where available, does not match the task intent
 
 <Warning>
-  Neroli is optimized for parallel work, not blind merging. Keep the parts you want.
+  Agent self-review is a filter, not a rubber stamp. Keep the parts you want.
 </Warning>
