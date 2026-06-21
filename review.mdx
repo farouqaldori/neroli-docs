@@ -1,10 +1,10 @@
 ---
 title: "Review"
-description: "Turn finished agent work into a shipping decision."
+description: "See what changed and choose what lands."
 ---
 
-Neroli treats agent output as a proposal. The point is not that the agent
-finished. The point is that you can understand, verify, and decide what ships.
+Neroli lets you run a lot of work at once. Review is where you decide what lands
+back in the main branch.
 
 <Frame caption="Review combines the plan, commit story, diff, verification, panes, conflicts, and final merge decision.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
@@ -12,19 +12,19 @@ finished. The point is that you can understand, verify, and decide what ships.
   </div>
 </Frame>
 
-## Review one session
+## One session
 
 <Steps>
-  <Step title="Read the plan and story">
-    The plan tells you what the agent intended. The commit story should explain the user-facing change in plain language.
+  <Step title="Scan the story">
+    Start with the plain-language summary of what changed and why.
   </Step>
 
   <Step title="Inspect the diff">
     Look for unrelated files, generated noise, secret files, dependency changes, and scripts you did not ask for.
   </Step>
 
-  <Step title="Check the evidence">
-    Use Verify, Build, browser panes, simulator panes, terminal logs, or cloud status. Evidence must come from the session you are reviewing.
+  <Step title="Run the workspace checks">
+    Use the same Build, Verify, browser, simulator, or terminal automations the workspace exposes.
   </Step>
 
   <Step title="Decide">
@@ -32,34 +32,30 @@ finished. The point is that you can understand, verify, and decide what ships.
   </Step>
 </Steps>
 
-## Review many sessions
+## Many sessions
 
-Parallel work is useful only when the review boundaries are real.
+Parallel sessions are where Neroli opens up. You can let several agents explore,
+then pick the work that should continue.
 
-Good parallel sessions:
+Common patterns:
 
-- one fixes a UI bug while another updates docs
-- one explores a refactor while another implements a small feature
-- two sessions try competing approaches and you choose one
-
-Bad parallel sessions:
-
-- two sessions edit the same files and both must land
-- broad prompts create overlapping cleanup work
-- shared local state makes verification ambiguous
+- one session builds a feature while another updates docs
+- several sessions explore different implementations
+- one agent writes tests while another changes the product
+- one cloud session keeps working while you continue locally
 
 Review each branch on its own first. Then merge one, merge several in sequence,
-or combine work manually.
+or combine work manually when that is the right call.
 
 ## Red flags
 
-- the diff is larger than the task
+- the diff is larger than expected
 - tests were deleted instead of fixed
 - verification ran from another session
-- cloud returned changes that were not re-verified locally
+- cloud returned changes that were not checked locally
 - conflict warnings show another session touched the same file or flow
 - line attribution, where available, does not match the task intent
 
 <Warning>
-  Speed is not the win. Reviewable speed is the win.
+  Neroli is optimized for parallel work, not blind merging. Keep the parts you want.
 </Warning>

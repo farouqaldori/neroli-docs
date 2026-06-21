@@ -1,89 +1,86 @@
 ---
 title: "Automations"
-description: "Make every Neroli session ready to set up, run, build, verify, and clean up."
+description: "Teach your workspace how to run itself."
 ---
 
-Automations are how Neroli stops each new worktree from feeling like a cold
-checkout. They turn your team's repeated commands into visible actions attached
-to the right session.
+Automations are how your workspace learns to operate itself.
 
-This is the difference between "an agent edited files somewhere" and "this
-session is runnable, testable, and ready to review."
+They can be scripts, like copying env files or starting Docker. They can also be
+agentic sessions, like an agent that reviews recent Neroli runs and suggests
+better automations. Claude, Codex, opencode, and other agents can create or
+update these automations from inside Neroli.
 
-<Frame caption="Automations make each session feel prepared: setup runs once, Run starts the app, Build compiles, Verify checks the result, and cleanup removes generated state.">
+<Frame caption="Automations can be toolbar buttons, lifecycle hooks, scheduled agent sessions, or cleanup scripts with stop behavior.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
-    Placeholder image: a session top bar with Set up, Run, Build, Verify, and Clean up buttons, plus a small history of previous runs.
+    Placeholder image: a Neroli Automations view showing Prepare session, Run dev, Build, Verify, Improve my automations, and Docs from shipped work.
   </div>
 </Frame>
 
-## What automations fix
+## Two kinds of automations
 
-Every parallel session has its own files. That is good for isolation, but it
-means every session also needs the same boring work:
-
-- install dependencies
-- copy local config that should not be committed
-- choose ports that do not collide with another session
-- start the app or local stack
-- run the build or verification command
-- clean up generated files when the session is removed
-
-Automations make that repeatable. The human gets buttons. Agents get a known
-workflow. Review gets evidence from the correct branch.
-
-## The automations worth creating first
-
-| Automation | When it runs | Why it matters |
+| Type | What it does | Example |
 | --- | --- | --- |
-| Set up session | after a session is created | A fresh worktree becomes usable without manual setup. |
-| Run | manual, pinned | The app starts from the session you are reviewing. |
-| Build | manual, pinned | You can compile before spending time in review. |
-| Verify | manual or when moved to In Review | Review has a real check, not just an agent message. |
-| Clean up | before a session is removed | Generated state and background processes do not pile up. |
+| Script automation | Runs deterministic shell work in the current session. | Copy `.env.local`, assign ports, start Docker, run Build, stop services. |
+| Agentic automation | Starts an isolated agent session with a job. | Review recent sessions, improve automations, update docs from shipped features. |
 
-Neroli's own repository uses this pattern: setup prepares per-worktree local
-state, Run launches the app, Build calls the project build script, Verify runs
-architecture checks, and cleanup removes generated session artifacts.
+Both are workspace-native. They can appear as toolbar buttons, run when a session
+is created, run when a session moves to review, run on a schedule, or clean up
+when a service stops.
 
-## How this changes your day
+## Automations worth creating
+
+| Automation | Why it is useful |
+| --- | --- |
+| Prepare session | Copies env files, installs deps, assigns unique ports, and creates isolated Docker or database state. |
+| Run dev | Starts the dev server or stack from the current session, usually as a pinned toolbar button. |
+| Stop / teardown | Stops the dev server, shuts down Docker, frees ports, and removes generated state. |
+| Build / Verify | Gives humans and agents the same one-click checks before work lands. |
+| Improve my automations | Agentic automation that inspects recent sessions and proposes easier setup/run/verify flows. |
+| Docs from shipped work | Agentic automation that drafts docs updates from new features and merged sessions. |
+| Review before merge | Agentic automation that checks diffs, migrations, env changes, tests, docs gaps, and risky files. |
+
+## The isolated dev environment pattern
+
+The highest-leverage automation is usually **Prepare session**.
 
 <Steps>
-  <Step title="Start a session">
-    Neroli creates the worktree. Setup can run immediately and prepare local files, ports, dependencies, and generated config.
+  <Step title="Copy local config">
+    Copy `.env.local`, certificates, or generated files into the session without committing secrets.
   </Step>
 
-  <Step title="Click Run">
-    The app starts from that session, so the browser or simulator shows the branch you are actually reviewing.
+  <Step title="Assign unique ports">
+    Give each session its own backend, database, or frontend ports so parallel runs do not collide.
   </Step>
 
-  <Step title="Let the agent work">
-    The agent can use the same Run, Build, and Verify actions instead of guessing commands.
+  <Step title="Provision services">
+    Start or prepare an isolated Docker database, queue, cache, or local stack for that session.
   </Step>
 
-  <Step title="Move to review">
-    Verification can run on demand or automatically when the session moves to In Review.
+  <Step title="Expose buttons">
+    Pin Run, Build, and Verify to the toolbar so humans and agents use the same workflow.
   </Step>
 
-  <Step title="Archive confidently">
-    Cleanup removes session-specific output so parallel work does not leave clutter behind.
+  <Step title="Add stop behavior">
+    Give services a Stop script so Neroli can tear them down cleanly when the run ends.
   </Step>
 </Steps>
 
-## Keep automations boring
+## Let agents improve the workspace
 
-Good automations are small wrappers around commands your repo already trusts.
+Because Neroli sessions can inspect their own workspace and recent runs, you can
+ask an agent to set this up for you:
 
-```sh
-#!/usr/bin/env bash
-set -euo pipefail
-cd "$NEROLI_WORKTREE_PATH"
-npm run check
+```txt
+Create Neroli automations for this repo:
+- Prepare session: copy env, assign unique ports, install deps, prepare Docker
+- Run dev: start the app from the current session
+- Stop: tear down services cleanly
+- Verify: run the checks we should use before review
 ```
 
-Use `NEROLI_WORKTREE_PATH` so the command always runs against the session that
-owns the work. Keep secrets out of the repo; copy or generate local files during
-setup instead.
+It can inspect package scripts, Docker config, previous commands, and failed
+sessions, then create automations that make the next session smoother.
 
 <Tip>
-  The point is not to automate everything. The point is to make the first five minutes of every session disappear.
+  The best automations make a new isolated session feel like your main dev environment, without sharing its state.
 </Tip>

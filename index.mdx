@@ -1,50 +1,52 @@
 ---
 title: "Introduction"
-description: "Run many AI coding agents in parallel. Trust what ships."
+description: "Tokenmaxxing without the chaos."
 ---
 
-Neroli is a Mac app for managing AI coding work that would otherwise sprawl
-across terminals, branches, browser tabs, and half-finished diffs.
+Neroli is a blazing-fast Mac app for running coding agents in parallel. It gives
+Claude, Codex, opencode, and other agents isolated sessions, visible panes,
+workspace automations, and smooth local-to-cloud handoff.
 
-It gives every task a lane: a branch, a worktree, panes, actions, status, cloud
-state when needed, and a review decision at the end.
+It feels like a GUI, but it runs the real provider TUIs directly. You get the
+native agent experience, full feature parity, and new provider features right
+away.
 
-<Frame caption="The core Neroli loop is task, session, evidence, review, and ship.">
+<Frame caption="Neroli turns one-agent-at-a-time coding into a fast parallel workspace.">
   <div className="not-prose rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
-    Placeholder image: a Neroli workspace with several sessions moving from Planning to In Review, with Run, Build, Verify, Browser, Cloud, and Merge controls visible.
+    Placeholder image: a Neroli workspace with several isolated sessions, direct TUI panes, Run and Build actions, and a Cloud handoff status.
   </div>
 </Frame>
 
-## The problem
+## What Neroli is
 
-Agents are fast at making changes. The hard part is keeping the changes
-reviewable.
+Neroli is for developers who already use coding agents and want to run more of
+them without turning their workflow into scattered terminals and mystery
+branches.
 
-Without Neroli:
+It is built around a few ideas:
 
-- one checkout gets polluted by unrelated tasks
-- the server you are looking at may not match the branch you are reviewing
-- new sessions need the same setup steps over and over
-- long tasks die when your laptop is closed or busy
-- a finished agent still leaves you asking what actually changed
+- **Sessions:** each agent run gets its own branch, worktree, panes, and state.
+- **Direct TUIs:** Neroli runs the real provider interfaces instead of wrapping a stale subset.
+- **Automations:** your workspace can set itself up, run, build, verify, stop, and improve.
+- **Cloud handoff:** snapshot a session and keep it running elsewhere, then bring it back.
 
-Neroli fixes that by making each agent session a small, inspectable workflow.
+## The flow
 
 <Steps>
-  <Step title="Start a focused session">
-    Pick one bug, feature, test, or investigation. Neroli gives it its own branch and worktree.
+  <Step title="Launch fast">
+    Open Neroli, choose a repo, and start a new session without fighting project setup or terminal sprawl.
   </Step>
 
-  <Step title="Make it runnable">
-    Repository actions can set up dependencies, start the app, build, verify, and clean up from the right session.
+  <Step title="Run agents in parallel">
+    Dispatch multiple agents into isolated sessions so features, fixes, experiments, and docs can move at the same time.
   </Step>
 
-  <Step title="Move long work to cloud">
-    Supported sessions can keep running in Neroli Cloud, then return to your Mac for review.
+  <Step title="Let the workspace run itself">
+    Automations can copy env files, assign ports, start dev servers, run checks, stop services, and even suggest better automations.
   </Step>
 
-  <Step title="Review the proposal">
-    Compare the plan, commit story, diff, browser or simulator evidence, and verification result before merging.
+  <Step title="Move work when needed">
+    Handoff snapshots the session conversation, edits, and workspace state into cloud, then brings work back local when you want it.
   </Step>
 </Steps>
 
@@ -52,30 +54,30 @@ Neroli fixes that by making each agent session a small, inspectable workflow.
 
 <CardGroup cols={2}>
   <Card title="Start" icon="sparkles" href="/start">
-    Install Neroli, open a repo, and run one clean session.
+    Open the app, connect your agents, and launch your first session.
   </Card>
 
   <Card title="Automations" icon="wand-sparkles" href="/automations">
-    Make every session ready to run, build, verify, and clean up.
+    Teach the workspace how to set up, run, build, stop, and improve itself.
   </Card>
 
   <Card title="Cloud" icon="cloud" href="/cloud">
-    Send supported long-running work to cloud and bring it back for review.
+    Snapshot sessions into cloud, run more agents, and bring work back local.
   </Card>
 
   <Card title="Review" icon="git-pull-request" href="/review">
-    Decide what ships when one or many agents finish.
+    See what changed and choose what lands.
   </Card>
 </CardGroup>
 
 ## What matters
 
-- **Confidence:** every result is a proposal until you inspect and verify it.
-- **Flow:** new sessions can start with setup and run actions already waiting.
-- **Parallelism:** split independent work without mixing files or panes.
-- **Continuity:** use cloud when the task should keep running away from your Mac.
-- **Control:** your main branch only changes after review.
+- **Speed:** the app boots fast and gets you into a session quickly.
+- **Feature parity:** direct TUIs mean provider features work as soon as providers ship them.
+- **Isolation:** sessions can experiment without colliding.
+- **Automation:** scripts and agentic sessions can keep improving the workspace.
+- **Portability:** work belongs to the workspace, not a single provider or runtime.
 
 <Info>
-  Neroli is local-first. Cloud is an explicit choice for supported sessions, not the default path for every task.
+  Neroli is local-first by default. Cloud is there when a session should keep running somewhere else.
 </Info>
